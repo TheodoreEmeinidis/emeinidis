@@ -1,0 +1,15 @@
+{
+  "name": "emeinidis-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Website and lightweight Node.js backend for Eminidis Projects.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "db:init": "node scripts/init-db.js"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}
