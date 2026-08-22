@@ -6,8 +6,8 @@
   "description": "Website and lightweight Node.js backend for Eminidis Projects.",
   "scripts": {
     "build": "node scripts/build-static.mjs",
-    "deploy": "npm run build && wrangler deploy",
-    "preview": "npm run build && wrangler dev",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev",
     "start": "node server.js",
     "dev": "node --watch server.js",
     "db:init": "node scripts/init-db.js"
