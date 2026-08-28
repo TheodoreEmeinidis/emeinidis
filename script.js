@@ -163,6 +163,7 @@ const translations = {
     footerContactAria: 'Στοιχεία επικοινωνίας',
     footerPhoneLabel: 'Τηλ. Επικοινωνίας',
     footerEmailLabel: 'Email',
+    footerRights: '© 2026. Με επιφύλαξη παντός δικαιώματος.',
     footerTop: 'ΠΙΣΩ ΣΤΗΝ ΑΡΧΗ'
   },
   en: {
@@ -296,6 +297,7 @@ const translations = {
     footerContactAria: 'Contact details',
     footerPhoneLabel: 'Phone',
     footerEmailLabel: 'Email',
+    footerRights: '© 2026 All rights reserved.',
     footerTop: 'BACK TO TOP'
   }
 };

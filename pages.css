@@ -183,12 +183,15 @@ h2{font-size:clamp(36px,5vw,66px);line-height:1}
 .site-footer a[data-i18n="footerTop"]{font-size:13px;white-space:nowrap}
 @media(max-width:760px){.contact-link{display:inline-flex;justify-content:center;gap:0;font-size:11px}.site-footer a[data-i18n="footerTop"]{font-size:12px}}
 @media(max-width:430px){.contact-link{width:100%;font-size:10px}.site-footer a[data-i18n="footerTop"]{font-size:12px}}
-.site-footer{display:grid;grid-template-columns:auto minmax(280px,1fr) auto;gap:28px 40px;align-items:center;padding-top:34px;padding-bottom:34px}
-.footer-contact{display:grid;grid-template-columns:repeat(2,minmax(160px,1fr));gap:18px 42px;min-width:0;max-width:620px}
+.site-footer{display:grid;grid-template-columns:minmax(120px,1fr) minmax(280px,1.1fr) minmax(120px,1fr);gap:18px clamp(28px,5vw,72px);align-items:center;padding-top:34px;padding-bottom:30px}
+.site-footer .brand{justify-self:start}
+.footer-contact{display:grid;grid-template-columns:repeat(2,minmax(160px,1fr));gap:18px 42px;justify-self:center;min-width:0;width:100%;max-width:620px}
 .footer-contact-item{display:grid;gap:8px;min-width:0}
 .footer-contact-label{color:var(--bronze-light);font:12px 'DM Mono',monospace;letter-spacing:.12em;line-height:1.35;text-transform:uppercase}
 .footer-contact-value{color:var(--paper);font:500 16px Manrope,Arial,sans-serif;letter-spacing:0;line-height:1.45;text-transform:none;word-break:break-word}
 .footer-contact-value:hover,.footer-contact-value:focus-visible{color:var(--bronze-light);outline:0}
-@media(max-width:900px){.site-footer{grid-template-columns:1fr;align-items:start}.footer-contact{width:100%;max-width:none}.site-footer a[data-i18n="footerTop"]{justify-self:start}}
+.site-footer a[data-i18n="footerTop"]{justify-self:end}
+.footer-rights{grid-column:1/-1;justify-self:end;color:var(--muted);font:10px 'DM Mono',monospace;letter-spacing:.1em;line-height:1.5;text-align:right;text-transform:uppercase}
+@media(max-width:900px){.site-footer{grid-template-columns:1fr;align-items:start;gap:24px}.footer-contact{justify-self:start;width:100%;max-width:none}.site-footer a[data-i18n="footerTop"]{justify-self:start}.footer-rights{justify-self:end;width:100%}}
 @media(max-width:560px){.footer-contact{grid-template-columns:1fr;gap:18px}.footer-contact-value{font-size:15px}}
-@media(max-width:430px){.footer-contact-label{font-size:11px}.footer-contact-value{font-size:14px}}
+@media(max-width:430px){.footer-contact-label{font-size:11px}.footer-contact-value{font-size:14px}.footer-rights{font-size:9px}}
