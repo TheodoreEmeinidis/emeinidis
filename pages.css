@@ -170,3 +170,8 @@ h2{font-size:clamp(56px,6.8vw,102px);line-height:.92}
 @media(max-width:430px){h2,.intro h2,.section-heading h2,.projects-top h2,.process h2,.status-heading h2,.renovation-lead h2,.building-info h2{font-size:clamp(43px,13vw,62px)}.intro,.services,.process{padding-top:36px}.projects{padding-top:42px}.content-band{padding-top:40px}.section-label span:first-child{font-size:14px}}
 .service-list{border-top:0}
 .service-item:last-child{border-bottom:0}
+.intro-content,.services-content,.projects-top>div:last-child,.process-content,.page-hero-copy{padding-top:30px}
+.services-content{padding-top:36px}
+.status-heading{align-items:flex-start}
+.status-heading>p{padding-top:30px}
+@media(max-width:760px){.intro-content,.services-content,.projects-top>div:last-child,.process-content,.page-hero-copy{padding-top:8px}.services-content{padding-top:14px}.status-heading>p{padding-top:0}}
