@@ -175,3 +175,5 @@ h2{font-size:clamp(42px,6vw,80px);line-height:.98}
 .status-heading{align-items:flex-start}
 .status-heading>p{padding-top:30px}
 @media(max-width:760px){.intro-content,.services-content,.projects-top>div:last-child,.process-content,.page-hero-copy{padding-top:8px}.services-content{padding-top:14px}.status-heading>p{padding-top:0}}
+.hero-proof{right:28px;bottom:28px}
+@media(max-width:760px){.hero-proof{right:6vw;left:auto;bottom:28px;text-align:right}}
