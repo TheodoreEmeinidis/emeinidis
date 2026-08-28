@@ -160,10 +160,9 @@ const translations = {
     formErrorDefault: 'Το μήνυμα δεν στάλθηκε.',
     formSuccess: 'Το μήνυμά σας καταχωρήθηκε. Θα επικοινωνήσουμε σύντομα.',
     formNetworkError: 'Υπήρξε πρόβλημα με την αποστολή.',
-    footerNote: 'ΜΕ ΣΚΕΨΗ ΚΑΙ ΣΥΝΕΠΕΙΑ.',
     footerContactAria: 'Στοιχεία επικοινωνίας',
-    footerAddress: 'Παστέρ 10 · Πολίχνη Θεσσαλονίκης',
-    footerCopyright: '© 2026 EMINIDIS PROJECTS',
+    footerPhoneLabel: 'Τηλ. Επικοινωνίας',
+    footerEmailLabel: 'Email',
     footerTop: 'ΠΙΣΩ ΣΤΗΝ ΑΡΧΗ'
   },
   en: {
@@ -294,10 +293,9 @@ const translations = {
     formErrorDefault: 'The message was not sent.',
     formSuccess: 'Your message has been recorded. We will contact you soon.',
     formNetworkError: 'There was a problem sending the message.',
-    footerNote: 'BUILT WITH INTENTION.',
     footerContactAria: 'Contact details',
-    footerAddress: 'Pasteur 10 · Polichni, Thessaloniki',
-    footerCopyright: '© 2026 EMINIDIS PROJECTS',
+    footerPhoneLabel: 'Phone',
+    footerEmailLabel: 'Email',
     footerTop: 'BACK TO TOP'
   }
 };
