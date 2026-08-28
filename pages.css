@@ -140,7 +140,7 @@ main > section:first-child{border-top:0}
 .section-label{padding-top:0;font-size:14px;line-height:1.35}
 .section-label span:first-child{font-size:18px}
 .eyebrow,.work-card span,.archive-item span,.phase-list span,.contact-method span,.field label,.building-info dt{font-size:12px}
-h2{font-size:clamp(42px,6vw,80px);line-height:.98}
+h2{font-size:clamp(36px,5vw,66px);line-height:1}
 .intro,.services,.process{padding-top:48px}
 .projects{padding-top:54px}
 .projects-top{margin-bottom:48px}
@@ -153,21 +153,21 @@ h2{font-size:clamp(42px,6vw,80px);line-height:.98}
 .project-meta h3{font-size:30px}
 .content-band{padding-top:52px}
 .status-heading{margin-bottom:30px}
-.status-heading h2{font-size:clamp(42px,6vw,80px);line-height:.98}
+.status-heading h2{font-size:clamp(36px,5vw,66px);line-height:1}
 .work-card{padding-top:10px}
 .work-card h3{font-size:34px}
 .archive-item h3{font-size:29px}
-.renovation-lead h2{font-size:clamp(42px,6vw,80px);line-height:.98}
+.renovation-lead h2{font-size:clamp(36px,5vw,66px);line-height:1}
 .phase-list{margin-top:46px;padding-top:16px}
 .phase-list h3,.process-steps h3{font-size:31px}
-.building-info h2{font-size:clamp(42px,6vw,80px);line-height:.98}
-.page-cta h2{font-size:clamp(42px,6vw,80px)}
-.contact h2{font-size:clamp(42px,6vw,80px);line-height:.98}
+.building-info h2{font-size:clamp(36px,5vw,66px);line-height:1}
+.page-cta h2{font-size:clamp(36px,5vw,66px)}
+.contact h2{font-size:clamp(36px,5vw,66px);line-height:1}
 .contact{padding-top:64px}
 .page-hero{padding-top:82px}
 .page-hero h1{font-size:clamp(64px,8vw,118px)}
-@media(max-width:760px){.section-label{margin-bottom:24px;font-size:12px}.section-label span:first-child{font-size:15px}h2,.intro h2,.section-heading h2,.projects-top h2,.process h2,.status-heading h2,.renovation-lead h2,.building-info h2{font-size:clamp(43px,11.5vw,64px)}.intro,.services,.process{padding-top:40px}.projects{padding-top:46px}.content-band{padding-top:44px}.page-hero{padding-top:56px}.page-hero .section-label{margin-bottom:22px}.projects-top{margin-bottom:34px}.section-heading{margin-bottom:32px}.intro-columns{margin-top:26px}.process-steps,.phase-list{margin-top:34px}.service-item h3{font-size:27px}.project-meta h3{font-size:26px}.work-card h3{font-size:30px}.contact{padding-top:48px}.contact h2{font-size:clamp(48px,13.5vw,74px)}}
-@media(max-width:430px){h2,.intro h2,.section-heading h2,.projects-top h2,.process h2,.status-heading h2,.renovation-lead h2,.building-info h2{font-size:clamp(39px,11.5vw,56px)}.intro,.services,.process{padding-top:36px}.projects{padding-top:42px}.content-band{padding-top:40px}.section-label span:first-child{font-size:14px}}
+@media(max-width:760px){.section-label{margin-bottom:24px;font-size:12px}.section-label span:first-child{font-size:15px}h2,.intro h2,.section-heading h2,.projects-top h2,.process h2,.status-heading h2,.renovation-lead h2,.building-info h2{font-size:clamp(36px,10vw,54px)}.intro,.services,.process{padding-top:40px}.projects{padding-top:46px}.content-band{padding-top:44px}.page-hero{padding-top:56px}.page-hero .section-label{margin-bottom:22px}.projects-top{margin-bottom:34px}.section-heading{margin-bottom:32px}.intro-columns{margin-top:26px}.process-steps,.phase-list{margin-top:34px}.service-item h3{font-size:27px}.project-meta h3{font-size:26px}.work-card h3{font-size:30px}.contact{padding-top:48px}.contact h2{font-size:clamp(40px,12vw,62px)}}
+@media(max-width:430px){h2,.intro h2,.section-heading h2,.projects-top h2,.process h2,.status-heading h2,.renovation-lead h2,.building-info h2{font-size:clamp(34px,10vw,48px)}.intro,.services,.process{padding-top:36px}.projects{padding-top:42px}.content-band{padding-top:40px}.section-label span:first-child{font-size:14px}}
 .service-list{border-top:0}
 .service-item:last-child{border-bottom:0}
 .intro-content,.services-content,.projects-top>div:last-child,.process-content,.page-hero-copy{padding-top:30px}
