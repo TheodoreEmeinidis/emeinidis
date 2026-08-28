@@ -163,7 +163,7 @@ const translations = {
     footerContactAria: 'Στοιχεία επικοινωνίας',
     footerPhoneLabel: 'Τηλ. Επικοινωνίας',
     footerEmailLabel: 'Email',
-    footerRights: '© 2026. Με επιφύλαξη παντός δικαιώματος.',
+    footerRights: '© 2026 All rights reserved.',
     footerTop: 'ΠΙΣΩ ΣΤΗΝ ΑΡΧΗ'
   },
   en: {
