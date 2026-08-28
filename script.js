@@ -13,6 +13,18 @@ document.querySelectorAll('.site-nav a').forEach((link) => {
   });
 });
 
+document.querySelectorAll('a[href="#top"]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? 'auto' : 'smooth'
+    });
+  });
+});
+
 const languagePage = document.querySelector('[data-language-page]');
 const languageMenu = document.querySelector('[data-language-menu]');
 const languageToggle = document.querySelector('[data-language-toggle]');
