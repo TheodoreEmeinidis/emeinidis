@@ -177,18 +177,11 @@ h2{font-size:clamp(36px,5vw,66px);line-height:1}
 .service-copy{padding:24px clamp(20px,2.2vw,30px) 28px}
 .service-item h3{font-size:clamp(29px,2.8vw,38px);margin:0 0 14px;line-height:1.02}
 .service-item p{max-width:none;font-size:14px;line-height:1.75}
-.service-concept{position:relative;min-height:210px;aspect-ratio:1.22;margin:0;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(circle at 25% 18%,rgba(181,106,66,.18),transparent 32%),linear-gradient(135deg,rgba(170,100,64,.12),rgba(5,5,5,.92) 62%)}
-.service-concept:before{content:'';position:absolute;inset:16px;border:1px solid rgba(170,100,64,.34);pointer-events:none}
-.service-concept span{position:absolute;display:block}
-.service-concept-build .concept-primary{left:24%;bottom:0;width:42%;height:74%;border:1px solid var(--bronze);background:linear-gradient(90deg,rgba(170,100,64,.18),rgba(170,100,64,.03)),repeating-linear-gradient(0deg,transparent 0 22px,rgba(170,100,64,.34) 23px 24px),repeating-linear-gradient(90deg,transparent 0 28px,rgba(170,100,64,.28) 29px 30px)}
-.service-concept-build .concept-secondary{right:16%;bottom:0;width:22%;height:54%;border:1px solid rgba(170,100,64,.65);background:repeating-linear-gradient(0deg,rgba(170,100,64,.18) 0 12px,transparent 13px 22px)}
-.service-concept-build .concept-detail{left:12%;bottom:18%;width:72%;height:1px;background:var(--line);box-shadow:0 -34px 0 rgba(170,100,64,.2),0 -68px 0 rgba(170,100,64,.14)}
-.service-concept-renovation .concept-primary{left:12%;top:18%;width:62%;height:46%;border:1px solid var(--bronze);background:repeating-linear-gradient(90deg,rgba(170,100,64,.18) 0 18px,transparent 19px 36px),repeating-linear-gradient(0deg,rgba(170,100,64,.14) 0 18px,transparent 19px 36px)}
-.service-concept-renovation .concept-secondary{right:12%;bottom:16%;width:54%;height:12px;background:var(--bronze);transform:rotate(-13deg);transform-origin:center;box-shadow:0 19px 0 rgba(170,100,64,.38)}
-.service-concept-renovation .concept-detail{left:18%;bottom:18%;width:34%;height:42px;border-left:1px solid var(--bronze);border-bottom:1px solid var(--bronze);background:linear-gradient(135deg,transparent 48%,rgba(170,100,64,.42) 49% 51%,transparent 52%)}
-.service-concept-study .concept-primary{left:14%;top:16%;width:68%;height:58%;border:1px solid var(--bronze);background:linear-gradient(90deg,rgba(170,100,64,.2) 1px,transparent 1px),linear-gradient(0deg,rgba(170,100,64,.16) 1px,transparent 1px);background-size:24px 24px;transform:rotate(-2deg)}
-.service-concept-study .concept-secondary{left:22%;top:30%;width:50%;height:34%;border:1px solid rgba(170,100,64,.62);border-left:0;border-bottom:0}
-.service-concept-study .concept-detail{right:13%;bottom:18%;width:44%;height:10px;border-top:1px solid var(--bronze);border-bottom:1px solid var(--bronze);transform:rotate(-18deg)}
+.service-concept{position:relative;min-height:210px;aspect-ratio:1.22;margin:0;overflow:hidden;border-bottom:1px solid var(--line);background:rgba(170,100,64,.08)}
+.service-concept:before{content:'';position:absolute;inset:16px;z-index:2;border:1px solid rgba(170,100,64,.34);pointer-events:none}
+.service-concept:after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,5,5,0) 48%,rgba(5,5,5,.34));pointer-events:none}
+.service-concept img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04);transition:transform .7s ease,filter .7s ease}
+.service-item:hover .service-concept img{transform:scale(1.035);filter:saturate(.95) contrast(1.05)}
 .status-heading{align-items:flex-start}
 .status-heading>p{padding-top:30px}
 @media(max-width:980px){.service-list{grid-template-columns:1fr}.service-item{grid-template-columns:minmax(180px,.42fr) 1fr}.service-concept{min-height:190px;aspect-ratio:auto;border-right:1px solid var(--line);border-bottom:0}.service-copy{align-self:center}}
