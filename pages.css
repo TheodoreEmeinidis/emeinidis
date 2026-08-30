@@ -18,6 +18,10 @@
 .page-hero-media img{filter:saturate(.8) contrast(1.05)}
 .page-hero-media:after{content:'';position:absolute;inset:14px;border:1px solid rgba(184,169,143,.45)}
 .content-band{padding:105px 5.5vw;border-bottom:1px solid var(--line)}
+.contact-page{border-top:0}
+.contact-page-title{padding:clamp(54px,7vw,96px) 5.5vw clamp(24px,3vw,46px);border:0}
+.contact-page-title h1{font-family:Georgia,serif;font-size:clamp(48px,7.2vw,104px);font-weight:400;line-height:.95;letter-spacing:0;margin:0;color:var(--paper)}
+.contact-page .content-band{padding-top:clamp(38px,5vw,78px);border-top:0}
 .content-band.light{background:#2a2520;color:#b8a98f;border-bottom:0}
 .status-heading{display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:42px}
 .status-heading h2{font-family:Georgia,serif;font-size:clamp(38px,5vw,70px);font-weight:400;line-height:.98;letter-spacing:0;margin:0}
@@ -64,9 +68,11 @@
 .field input,.field textarea{width:100%;border:1px solid rgba(184,169,143,.22);background:rgba(184,169,143,.08);color:var(--paper);padding:16px 18px;font:15px Manrope,Arial,sans-serif;border-radius:0}
 .field textarea{min-height:170px;resize:vertical}
 .field input:focus,.field textarea:focus{outline:1px solid var(--bronze);border-color:var(--bronze)}
-.form-status{min-height:24px;margin:0;color:#b8a98f;font-size:13px;line-height:1.6}
+.form-status{min-height:24px;margin:0;color:#b8a98f;font-size:13px;line-height:1.6;opacity:0;transform:translateY(-4px);transition:opacity .2s ease,transform .2s ease}
+.form-status.is-visible{opacity:1;transform:none;padding:15px 17px;border:1px solid var(--line);background:rgba(170,100,64,.08)}
 .form-status.is-success{color:var(--bronze-light)}
 .form-status.is-error{color:#f0b3a2}
+.form-status.is-error.is-visible{border-color:rgba(240,179,162,.48);background:rgba(240,179,162,.08)}
 .page-cta{display:flex;justify-content:space-between;gap:32px;align-items:center;background:var(--bronze);color:var(--ink);padding:65px 5.5vw}
 .page-cta h2{font-family:Georgia,serif;font-size:clamp(36px,5vw,70px);font-weight:400;line-height:1;margin:0}
 .page-cta .button-light{background:var(--ink);color:var(--paper)}
@@ -95,6 +101,7 @@
 @media(max-width:900px){.work-grid{grid-template-columns:1fr 1fr}.work-card.featured{grid-column:span 2}.renovation-lead,.contact-layout{grid-template-columns:1fr}.archive-list{grid-template-columns:1fr}.page-cta{display:block}.page-cta .button{margin-top:32px}}
 @media(max-width:900px){.building-story,.building-story-reverse{grid-template-columns:1fr}.building-story-reverse .building-info,.building-story-reverse .building-gallery{order:initial}.building-info{position:static}.gallery-wall{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.site-nav a.is-active:not(.nav-cta){padding-bottom:14px}.page-hero{display:block;min-height:auto;padding:76px 6vw 70px}.page-hero:before{left:6vw;right:6vw}.page-hero .section-label{margin-bottom:42px}.page-hero h1{font-size:clamp(48px,14vw,76px)}.page-hero-media{height:360px;margin-top:48px}.content-band{padding:74px 6vw}.status-heading{display:block}.status-heading p{margin-top:24px}.work-grid,.archive-list,.phase-list{display:block}.work-card,.work-card.featured{margin-bottom:44px}.work-card figure,.work-card.featured figure{height:min(106vw,430px)}.archive-item{grid-template-columns:1fr}.renovation-mosaic{display:block}.renovation-mosaic figure,.renovation-mosaic figure:first-child{min-height:0;height:min(92vw,390px);margin-bottom:16px}.phase-list>div{padding:22px 0;border-bottom:1px solid var(--line)}.contact-method a,.contact-method p{font-size:24px}.page-cta{padding:56px 6vw}.building-stories{gap:78px}.building-gallery{grid-auto-rows:min(44vw,210px);gap:12px}.building-gallery .gallery-main{grid-row:span 1}.building-info h2{font-size:clamp(38px,11vw,58px)}.gallery-wall{display:block}.gallery-wall figure{height:min(86vw,380px);margin-bottom:14px}.gallery-wall figure:first-child,.gallery-wall figure:nth-child(4){grid-row:auto;grid-column:auto}}
+@media(max-width:760px){.contact-page-title{padding:52px 6vw 22px}.contact-page-title h1{font-size:clamp(46px,13vw,70px)}.contact-page .content-band{padding-top:42px}.form-status.is-visible{padding:14px 15px}}
 body,.site-shell,.page-main,.site-header,.intro,.services,.projects,.process,.contact,.content-band,.content-band.light,.page-cta,.site-footer{background:var(--ink);color:var(--paper)}
 body{overflow-x:hidden}
 .site-shell{overflow:visible}

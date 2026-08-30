@@ -84,8 +84,6 @@ const translations = {
     processTwoBody: 'Μετατρέπουμε την ιδέα σε ένα συγκεκριμένο, εφαρμόσιμο πλάνο.',
     processThreeTitle: 'Υλοποιούμε',
     processThreeBody: 'Αναλαμβάνουμε κάθε λεπτομέρεια μέχρι να παραδώσουμε το κλειδί.',
-    contactEyebrow: 'ΑΣ ΜΙΛΗΣΟΥΜΕ',
-    contactHeading: 'Έχετε ένα έργο<br>στο μυαλό σας;',
     contactButton: 'Επικοινωνήστε μαζί μας',
     projectsPageLabel: 'ΕΡΓΑ',
     projectsPageEyebrow: 'ΚΤΙΡΙΑ / ΛΕΠΤΟΜΕΡΕΙΕΣ / ΠΟΡΕΙΑ',
@@ -145,17 +143,17 @@ const translations = {
     renovationsCtaHeading: 'Έχετε χώρο<br>για ανακαίνιση;',
     renovationsCtaButton: 'Ας μιλήσουμε',
     contactPageLabel: 'ΕΠΙΚΟΙΝΩΝΙΑ',
-    contactPageEyebrow: 'ΑΣ ΜΙΛΗΣΟΥΜΕ',
-    contactPageHeading: 'Επικοινωνήστε<br><i>μαζί μας.</i>',
-    contactPageIntro: 'Το πρώτο βήμα είναι μια καθαρή συζήτηση για τον χώρο, τις ανάγκες και το χρονοδιάγραμμα.',
+    contactPageTitle: 'Επικοινωνία',
     contactAddressLabel: 'Διεύθυνση',
     contactPhoneLabel: 'Τηλέφωνο',
     contactEmailLabel: 'Email',
-    contactNameLabel: 'Ονοματεπώνυμο',
-    contactFormEmailLabel: 'Email',
+    contactNameLabel: 'Ονοματεπώνυμο *',
+    contactFormEmailLabel: 'Email *',
     contactFormPhoneLabel: 'Τηλέφωνο',
-    contactMessageLabel: 'Το μήνυμά σας',
+    contactMessageLabel: 'Το μήνυμά σας *',
     contactSubmitButton: 'Αποστολή μηνύματος',
+    formRequiredMissing: 'Παρακαλώ συμπληρώστε όλα τα υποχρεωτικά πεδία με αστερίσκο.',
+    formEmailInvalid: 'Παρακαλώ συμπληρώστε μια έγκυρη διεύθυνση email.',
     formSending: 'Αποστολή...',
     formErrorDefault: 'Το μήνυμα δεν στάλθηκε.',
     formSuccess: 'Το μήνυμά σας καταχωρήθηκε. Θα επικοινωνήσουμε σύντομα.',
@@ -218,8 +216,6 @@ const translations = {
     processTwoBody: 'We turn the idea into a specific, practical plan.',
     processThreeTitle: 'We build',
     processThreeBody: 'We take care of every detail until the keys are delivered.',
-    contactEyebrow: 'START A CONVERSATION',
-    contactHeading: 'Have a project<br>in mind?',
     contactButton: 'Contact us',
     projectsPageLabel: 'PROJECTS',
     projectsPageEyebrow: 'BUILDINGS / DETAILS / PROGRESS',
@@ -279,17 +275,17 @@ const translations = {
     renovationsCtaHeading: 'Do you have a space<br>for renovation?',
     renovationsCtaButton: 'Let’s talk',
     contactPageLabel: 'CONTACT',
-    contactPageEyebrow: 'START A CONVERSATION',
-    contactPageHeading: 'Contact<br><i>our team.</i>',
-    contactPageIntro: 'The first step is a clear conversation about the space, the needs, and the timeline.',
+    contactPageTitle: 'Contact',
     contactAddressLabel: 'Address',
     contactPhoneLabel: 'Phone',
     contactEmailLabel: 'Email',
-    contactNameLabel: 'Full name',
-    contactFormEmailLabel: 'Email',
+    contactNameLabel: 'Full name *',
+    contactFormEmailLabel: 'Email *',
     contactFormPhoneLabel: 'Phone',
-    contactMessageLabel: 'Your message',
+    contactMessageLabel: 'Your message *',
     contactSubmitButton: 'Send message',
+    formRequiredMissing: 'Please fill in all mandatory fields marked with an asterisk.',
+    formEmailInvalid: 'Please enter a valid email address.',
     formSending: 'Sending...',
     formErrorDefault: 'The message was not sent.',
     formSuccess: 'Your message has been recorded. We will contact you soon.',
@@ -422,13 +418,32 @@ contactForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   const submitButton = contactForm.querySelector('button[type="submit"]');
+  const requiredFields = Array.from(contactForm.querySelectorAll('[required]'));
+  const missingField = requiredFields.find((field) => !String(field.value || '').trim());
+  const invalidEmail = contactForm.querySelector('input[type="email"]:invalid');
   const formData = new FormData(contactForm);
   const payload = Object.fromEntries(formData.entries());
 
   const dictionary = getCurrentDictionary();
 
-  formStatus.textContent = dictionary.formSending;
   formStatus.className = 'form-status';
+
+  if (missingField) {
+    formStatus.textContent = dictionary.formRequiredMissing;
+    formStatus.classList.add('is-error', 'is-visible');
+    missingField.focus();
+    return;
+  }
+
+  if (invalidEmail) {
+    formStatus.textContent = dictionary.formEmailInvalid;
+    formStatus.classList.add('is-error', 'is-visible');
+    invalidEmail.focus();
+    return;
+  }
+
+  formStatus.textContent = dictionary.formSending;
+  formStatus.classList.add('is-visible');
   submitButton.disabled = true;
 
   try {
