@@ -90,17 +90,21 @@ const translations = {
     projectsPageHeading: 'Τα έργα<br><i>μέσα από εικόνες.</i>',
     projectsPageIntro: 'Κάθε κτίριο παρουσιάζεται σαν μικρή ιστορία: μια βασική φωτογραφία, συμπληρωματικές εικόνες και τα στοιχεία που βοηθούν τον επισκέπτη να το καταλάβει γρήγορα.',
     projectsOneEyebrow: 'Μελλοντικά Έργα',
-    projectsOneHeading: 'Σταυρούπολη<br><i>Θεσσαλονίκη.</i>',
+    projectsOneHeading: 'Σταυρούπολη',
     projectsOneIntro: 'Η παρουσίαση ξεκινά με καθαρή εικόνα του κτιρίου και συνεχίζει με κοντινές λήψεις και στάδια κατασκευής.',
     factType: 'Τύπος',
     factStage: 'Στάδιο',
     factHomes: 'Κατοικίες',
+    factFloors: 'Ορόφοι',
+    factApartments: 'Διαμερίσματα',
     factArea: 'Περιοχή',
     factStatus: 'Κατάσταση',
     factApproach: 'Προσέγγιση',
     projectsOneType: 'Πολυκατοικία',
     projectsOneStage: 'Μελλοντικά Έργα',
     projectsOneHomes: 'Διαμερίσματα και μεζονέτες',
+    projectsOneFloors: '4',
+    projectsOneApartments: '4',
     projectsTwoEyebrow: 'ΟΛΟΚΛΗΡΩΜΕΝΟ',
     projectsTwoHeading: 'Πολυκατοικία<br><i>με χαρακτήρα.</i>',
     projectsTwoIntro: 'Για τα ολοκληρωμένα κτίρια, η σελίδα δίνει βάρος στην πρόσοψη, τη γωνία του κτιρίου και το αστικό περιβάλλον.',
@@ -163,7 +167,9 @@ const translations = {
     footerEmailLabel: 'Email',
     footerRights: '© 2026 All rights reserved.',
     footerTop: 'ΠΙΣΩ ΣΤΗΝ ΑΡΧΗ',
-    imageLightboxClose: 'Κλείσιμο εικόνας'
+    imageLightboxClose: 'Κλείσιμο εικόνας',
+    imageLightboxPrevious: 'Προηγούμενη εικόνα',
+    imageLightboxNext: 'Επόμενη εικόνα'
   },
   en: {
     documentTitle: 'Eminidis Projects — Construction & renovation',
@@ -223,17 +229,21 @@ const translations = {
     projectsPageHeading: 'Projects<br><i>through images.</i>',
     projectsPageIntro: 'Each building is presented as a small story: one main photograph, supporting images, and the details that help visitors understand it quickly.',
     projectsOneEyebrow: 'Future Projects',
-    projectsOneHeading: 'Stavroupoli<br><i>Thessaloniki.</i>',
+    projectsOneHeading: 'Stavroupoli',
     projectsOneIntro: 'The presentation begins with a clear view of the building and continues with close-up images and construction stages.',
     factType: 'Type',
     factStage: 'Stage',
     factHomes: 'Residences',
+    factFloors: 'Floors',
+    factApartments: 'Apartments',
     factArea: 'Area',
     factStatus: 'Status',
     factApproach: 'Approach',
     projectsOneType: 'Apartment building',
     projectsOneStage: 'Future Projects',
     projectsOneHomes: 'Apartments and maisonettes',
+    projectsOneFloors: '4',
+    projectsOneApartments: '4',
     projectsTwoEyebrow: 'COMPLETED',
     projectsTwoHeading: 'Apartment building<br><i>with character.</i>',
     projectsTwoIntro: 'For completed buildings, the page focuses on the facade, the corner of the building, and the surrounding urban context.',
@@ -296,7 +306,9 @@ const translations = {
     footerEmailLabel: 'Email',
     footerRights: '© 2026 All rights reserved.',
     footerTop: 'BACK TO TOP',
-    imageLightboxClose: 'Close image'
+    imageLightboxClose: 'Close image',
+    imageLightboxPrevious: 'Previous image',
+    imageLightboxNext: 'Next image'
   }
 };
 
@@ -398,10 +410,12 @@ if (languageMenu && languageToggle && languageOption) {
   });
 }
 
-const imageLightboxLinks = document.querySelectorAll('.image-open-link');
+const imageLightboxLinks = Array.from(document.querySelectorAll('.image-open-link'));
 
 if (imageLightboxLinks.length) {
   let activeImageTrigger = null;
+  let activeImageGroup = [];
+  let activeImageIndex = 0;
   const imageLightbox = document.createElement('div');
 
   imageLightbox.className = 'image-lightbox';
@@ -409,9 +423,11 @@ if (imageLightboxLinks.length) {
   imageLightbox.setAttribute('role', 'dialog');
   imageLightbox.setAttribute('aria-modal', 'true');
   imageLightbox.innerHTML = `
+    <button class="image-lightbox-nav image-lightbox-prev" type="button" data-image-lightbox-prev hidden><span aria-hidden="true">&lt;</span></button>
     <div class="image-lightbox-frame">
       <img src="" alt="" data-image-lightbox-image>
     </div>
+    <button class="image-lightbox-nav image-lightbox-next" type="button" data-image-lightbox-next hidden><span aria-hidden="true">&gt;</span></button>
     <button class="image-lightbox-close" type="button" data-image-lightbox-close>X</button>
   `;
 
@@ -419,7 +435,53 @@ if (imageLightboxLinks.length) {
 
   const imageLightboxImage = imageLightbox.querySelector('[data-image-lightbox-image]');
   const imageLightboxClose = imageLightbox.querySelector('[data-image-lightbox-close]');
+  const imageLightboxPrevious = imageLightbox.querySelector('[data-image-lightbox-prev]');
+  const imageLightboxNext = imageLightbox.querySelector('[data-image-lightbox-next]');
   const imageLightboxFrame = imageLightbox.querySelector('.image-lightbox-frame');
+
+  function getImageGroup(trigger) {
+    const groupName = trigger.dataset.lightboxGroup;
+
+    if (!groupName) {
+      return [trigger];
+    }
+
+    return imageLightboxLinks.filter((link) => link.dataset.lightboxGroup === groupName);
+  }
+
+  function updateImageLightboxControls() {
+    const dictionary = getCurrentDictionary();
+    const hasMultipleImages = activeImageGroup.length > 1;
+
+    imageLightboxClose.setAttribute('aria-label', dictionary.imageLightboxClose);
+    imageLightboxPrevious.setAttribute('aria-label', dictionary.imageLightboxPrevious);
+    imageLightboxNext.setAttribute('aria-label', dictionary.imageLightboxNext);
+    imageLightboxPrevious.hidden = !hasMultipleImages;
+    imageLightboxNext.hidden = !hasMultipleImages;
+  }
+
+  function showImageLightboxItem(index) {
+    if (!activeImageGroup.length) {
+      return false;
+    }
+
+    activeImageIndex = (index + activeImageGroup.length) % activeImageGroup.length;
+
+    const link = activeImageGroup[activeImageIndex];
+    const image = link.querySelector('img');
+    const href = link.getAttribute('href');
+
+    if (!href || !image) {
+      return false;
+    }
+
+    activeImageTrigger = link;
+    imageLightboxImage.src = href;
+    imageLightboxImage.alt = image.alt || '';
+    updateImageLightboxControls();
+
+    return true;
+  }
 
   function closeImageLightbox() {
     imageLightbox.classList.remove('is-open');
@@ -428,25 +490,30 @@ if (imageLightboxLinks.length) {
     imageLightboxImage.removeAttribute('src');
     activeImageTrigger?.focus();
     activeImageTrigger = null;
+    activeImageGroup = [];
+    activeImageIndex = 0;
   }
 
   function openImageLightbox(trigger) {
-    const image = trigger.querySelector('img');
-    const href = trigger.getAttribute('href');
-    const dictionary = getCurrentDictionary();
+    activeImageGroup = getImageGroup(trigger);
+    activeImageIndex = Math.max(activeImageGroup.indexOf(trigger), 0);
 
-    if (!href || !image) {
+    if (!showImageLightboxItem(activeImageIndex)) {
       return;
     }
 
-    activeImageTrigger = trigger;
-    imageLightboxImage.src = href;
-    imageLightboxImage.alt = image.alt || '';
-    imageLightboxClose.setAttribute('aria-label', dictionary.imageLightboxClose);
     imageLightbox.classList.add('is-open');
     imageLightbox.setAttribute('aria-hidden', 'false');
     document.body.classList.add('lightbox-open');
     imageLightboxClose.focus();
+  }
+
+  function moveImageLightbox(direction) {
+    if (activeImageGroup.length < 2) {
+      return;
+    }
+
+    showImageLightboxItem(activeImageIndex + direction);
   }
 
   imageLightboxLinks.forEach((link) => {
@@ -463,10 +530,20 @@ if (imageLightboxLinks.length) {
   });
 
   imageLightboxClose.addEventListener('click', closeImageLightbox);
+  imageLightboxPrevious.addEventListener('click', () => moveImageLightbox(-1));
+  imageLightboxNext.addEventListener('click', () => moveImageLightbox(1));
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && imageLightbox.classList.contains('is-open')) {
+    if (!imageLightbox.classList.contains('is-open')) {
+      return;
+    }
+
+    if (event.key === 'Escape') {
       closeImageLightbox();
+    } else if (event.key === 'ArrowLeft') {
+      moveImageLightbox(-1);
+    } else if (event.key === 'ArrowRight') {
+      moveImageLightbox(1);
     }
   });
 }
