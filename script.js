@@ -89,7 +89,6 @@ const translations = {
     projectsPageEyebrow: 'ΚΤΙΡΙΑ / ΛΕΠΤΟΜΕΡΕΙΕΣ / ΠΟΡΕΙΑ',
     projectsPageHeading: 'Τα έργα<br><i>μέσα από εικόνες.</i>',
     projectsPageIntro: 'Κάθε κτίριο παρουσιάζεται σαν μικρή ιστορία: μια βασική φωτογραφία, συμπληρωματικές εικόνες και τα στοιχεία που βοηθούν τον επισκέπτη να το καταλάβει γρήγορα.',
-    projectsOneEyebrow: 'Μελλοντικά Έργα',
     projectsOneHeading: 'Σταυρούπολη',
     projectsOneIntro: 'Η παρουσίαση ξεκινά με καθαρή εικόνα του κτιρίου και συνεχίζει με κοντινές λήψεις και στάδια κατασκευής.',
     factType: 'Τύπος',
@@ -228,7 +227,6 @@ const translations = {
     projectsPageEyebrow: 'BUILDINGS / DETAILS / PROGRESS',
     projectsPageHeading: 'Projects<br><i>through images.</i>',
     projectsPageIntro: 'Each building is presented as a small story: one main photograph, supporting images, and the details that help visitors understand it quickly.',
-    projectsOneEyebrow: 'Future Projects',
     projectsOneHeading: 'Stavroupoli',
     projectsOneIntro: 'The presentation begins with a clear view of the building and continues with close-up images and construction stages.',
     factType: 'Type',
@@ -548,7 +546,7 @@ if (imageLightboxLinks.length) {
   });
 }
 
-const revealItems = document.querySelectorAll('.service-item, .project-card, .work-card, .building-story, .gallery-wall figure, .archive-item, .phase-list > div, .contact-method, .process-steps > div');
+const revealItems = document.querySelectorAll('.service-item, .project-feature, .project-card, .work-card, .building-story, .gallery-wall figure, .archive-item, .phase-list > div, .contact-method, .process-steps > div');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
