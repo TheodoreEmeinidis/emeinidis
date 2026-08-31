@@ -162,7 +162,8 @@ const translations = {
     footerPhoneLabel: 'Τηλ. Επικοινωνίας',
     footerEmailLabel: 'Email',
     footerRights: '© 2026 All rights reserved.',
-    footerTop: 'ΠΙΣΩ ΣΤΗΝ ΑΡΧΗ'
+    footerTop: 'ΠΙΣΩ ΣΤΗΝ ΑΡΧΗ',
+    imageLightboxClose: 'Κλείσιμο εικόνας'
   },
   en: {
     documentTitle: 'Eminidis Projects — Construction & renovation',
@@ -294,7 +295,8 @@ const translations = {
     footerPhoneLabel: 'Phone',
     footerEmailLabel: 'Email',
     footerRights: '© 2026 All rights reserved.',
-    footerTop: 'BACK TO TOP'
+    footerTop: 'BACK TO TOP',
+    imageLightboxClose: 'Close image'
   }
 };
 
@@ -392,6 +394,79 @@ if (languageMenu && languageToggle && languageOption) {
     if (event.key === 'Escape') {
       setLanguageMenuOpen(false);
       languageToggle.focus();
+    }
+  });
+}
+
+const imageLightboxLinks = document.querySelectorAll('.image-open-link');
+
+if (imageLightboxLinks.length) {
+  let activeImageTrigger = null;
+  const imageLightbox = document.createElement('div');
+
+  imageLightbox.className = 'image-lightbox';
+  imageLightbox.setAttribute('aria-hidden', 'true');
+  imageLightbox.setAttribute('role', 'dialog');
+  imageLightbox.setAttribute('aria-modal', 'true');
+  imageLightbox.innerHTML = `
+    <div class="image-lightbox-frame">
+      <img src="" alt="" data-image-lightbox-image>
+    </div>
+    <button class="image-lightbox-close" type="button" data-image-lightbox-close>X</button>
+  `;
+
+  document.body.append(imageLightbox);
+
+  const imageLightboxImage = imageLightbox.querySelector('[data-image-lightbox-image]');
+  const imageLightboxClose = imageLightbox.querySelector('[data-image-lightbox-close]');
+  const imageLightboxFrame = imageLightbox.querySelector('.image-lightbox-frame');
+
+  function closeImageLightbox() {
+    imageLightbox.classList.remove('is-open');
+    imageLightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lightbox-open');
+    imageLightboxImage.removeAttribute('src');
+    activeImageTrigger?.focus();
+    activeImageTrigger = null;
+  }
+
+  function openImageLightbox(trigger) {
+    const image = trigger.querySelector('img');
+    const href = trigger.getAttribute('href');
+    const dictionary = getCurrentDictionary();
+
+    if (!href || !image) {
+      return;
+    }
+
+    activeImageTrigger = trigger;
+    imageLightboxImage.src = href;
+    imageLightboxImage.alt = image.alt || '';
+    imageLightboxClose.setAttribute('aria-label', dictionary.imageLightboxClose);
+    imageLightbox.classList.add('is-open');
+    imageLightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lightbox-open');
+    imageLightboxClose.focus();
+  }
+
+  imageLightboxLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      openImageLightbox(link);
+    });
+  });
+
+  imageLightbox.addEventListener('click', (event) => {
+    if (event.target === imageLightbox || event.target === imageLightboxFrame) {
+      closeImageLightbox();
+    }
+  });
+
+  imageLightboxClose.addEventListener('click', closeImageLightbox);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && imageLightbox.classList.contains('is-open')) {
+      closeImageLightbox();
     }
   });
 }
