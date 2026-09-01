@@ -34,7 +34,7 @@ await writeFile(
   <title>Η σελίδα δεν βρέθηκε | Eminidis Projects</title>
   <link rel="stylesheet" href="/styles.css?v=black9">
   <link rel="stylesheet" href="/responsive.css?v=black9">
-  <link rel="stylesheet" href="/pages.css?v=black54">
+  <link rel="stylesheet" href="/pages.css?v=black55">
 </head>
 <body>
   <main class="page-main">
