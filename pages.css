@@ -252,14 +252,14 @@ h2{font-size:clamp(36px,5vw,66px);line-height:1}
 .site-footer a[data-i18n="footerTop"]{font-size:13px;white-space:nowrap}
 @media(max-width:760px){.contact-link{display:inline-flex;justify-content:center;gap:0;font-size:11px}.site-footer a[data-i18n="footerTop"]{font-size:12px}}
 @media(max-width:430px){.contact-link{width:100%;font-size:10px}.site-footer a[data-i18n="footerTop"]{font-size:12px}}
-.site-footer{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:clamp(18px,3vw,44px);row-gap:18px;align-items:start;padding-top:34px;padding-bottom:30px}
+.site-footer{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:clamp(18px,3vw,44px);row-gap:18px;align-items:start;padding:34px clamp(28px,5.5vw,76px) 30px}
 .site-footer .brand{justify-self:center}
 .footer-contact{display:contents}
 .footer-contact-item{display:grid;gap:10px;min-width:0;justify-items:center;text-align:center}
 .footer-phone-stack{gap:8px}
 .footer-phone-item{justify-items:center}
 .footer-phone-item .footer-contact-label{justify-self:center;text-align:center;white-space:nowrap}
-.footer-phone-item .footer-phone-stack{display:flex;flex-wrap:wrap;justify-content:center;gap:8px clamp(20px,2.2vw,34px)}
+.footer-phone-item .footer-phone-stack{display:flex;flex-wrap:nowrap;justify-content:center;gap:8px clamp(16px,1.5vw,24px)}
 .footer-contact-label{color:var(--bronze-light);font:12px 'DM Mono',monospace;letter-spacing:.14em;line-height:1.35;text-transform:uppercase}
 .footer-contact-value{display:inline-flex;align-items:center;min-height:30px;width:max-content;max-width:100%;color:var(--paper);font:500 16px Manrope,Arial,sans-serif;letter-spacing:0;line-height:1.45;text-transform:none;word-break:break-word}
 .footer-contact-value:hover,.footer-contact-value:focus-visible{color:var(--bronze-light);text-decoration:underline;text-underline-offset:4px;outline:0}
