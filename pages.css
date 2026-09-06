@@ -202,6 +202,7 @@ h2{font-size:clamp(36px,5vw,66px);line-height:1}
 .project-meta{padding-top:12px}
 .project-meta h3{font-size:30px}
 .content-band{padding-top:52px}
+.projects-page .contact-page-title + .content-band,.renovations-page .contact-page-title + .content-band{padding-top:clamp(18px,1.8vw,28px)}
 .status-heading{margin-bottom:30px}
 .status-heading h2{font-size:clamp(36px,5vw,66px);line-height:1}
 .work-card{padding-top:10px}
