@@ -57,7 +57,7 @@
 .phase-list h3{font:400 26px Georgia,serif;margin:22px 0 12px}
 .phase-list p{font-size:13px;line-height:1.7;color:#9f927d;margin:0}
 .contact-layout{display:grid;grid-template-columns:minmax(320px,1.18fr) minmax(260px,.82fr);gap:6vw;align-items:start}
-.contact-methods{border-top:1px solid var(--line)}
+.contact-methods{border-top:0}
 .contact-method{padding:24px 0;border-bottom:1px solid var(--line)}
 .contact-method span{display:block;font:10px 'DM Mono',monospace;color:var(--bronze);letter-spacing:.14em;margin-bottom:10px;text-transform:uppercase}
 .contact-method a,.contact-method p{font:400 28px Georgia,serif;color:var(--paper);margin:0;line-height:1.2}
@@ -185,6 +185,9 @@ main > section:first-child{border-top:0}
 .section-label{padding-top:0;font-size:14px;line-height:1.35}
 .section-label span:first-child{font-size:18px}
 .eyebrow,.work-card span,.archive-item span,.phase-list span,.contact-method span,.field label,.building-info dt{font-size:12px}
+.contact-method span{font-size:16px}
+.field label{font-size:14px}
+.contact-form .button{justify-content:center;text-align:center}
 h2{font-size:clamp(36px,5vw,66px);line-height:1}
 .intro,.services,.process{padding-top:48px}
 .projects{padding-top:54px}
