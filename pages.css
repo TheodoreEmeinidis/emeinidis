@@ -130,12 +130,12 @@
 .image-lightbox.is-open{display:flex}
 .image-lightbox-frame{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
 .image-lightbox-frame img{width:auto;height:auto;max-width:min(100%,1320px);max-height:86vh;object-fit:contain}
-.image-lightbox-close{position:absolute;top:clamp(18px,3vw,34px);right:clamp(18px,3vw,34px);display:grid;place-items:center;width:46px;height:46px;border:1px solid var(--line);background:rgba(5,5,5,.78);color:var(--paper);font:500 16px 'DM Mono',monospace;letter-spacing:0;cursor:pointer}
-.image-lightbox-nav{position:absolute;top:50%;display:grid;place-items:center;width:50px;height:58px;border:1px solid var(--line);background:rgba(5,5,5,.72);color:var(--paper);font:500 25px 'DM Mono',monospace;line-height:1;letter-spacing:0;transform:translateY(-50%);cursor:pointer}
+.image-lightbox-close{position:absolute;top:clamp(18px,3vw,34px);right:clamp(18px,3vw,34px);display:grid;place-items:center;width:46px;height:46px;border:0;background:rgba(5,5,5,.78);color:var(--paper);font:500 16px 'DM Mono',monospace;letter-spacing:0;cursor:pointer}
+.image-lightbox-nav{position:absolute;top:50%;display:grid;place-items:center;width:50px;height:58px;border:0;background:rgba(5,5,5,.72);color:var(--paper);font:500 25px 'DM Mono',monospace;line-height:1;letter-spacing:0;transform:translateY(-50%);cursor:pointer}
 .image-lightbox-nav[hidden]{display:none}
 .image-lightbox-prev{left:clamp(18px,3vw,34px)}
 .image-lightbox-next{right:clamp(18px,3vw,34px)}
-.image-lightbox-close:hover,.image-lightbox-close:focus-visible,.image-lightbox-nav:hover,.image-lightbox-nav:focus-visible{border-color:var(--bronze-light);color:var(--bronze-light);outline:0}
+.image-lightbox-close:hover,.image-lightbox-close:focus-visible,.image-lightbox-nav:hover,.image-lightbox-nav:focus-visible{color:var(--bronze-light);outline:0}
 .gallery-wall{display:grid;grid-template-columns:1.35fr 1fr 1fr;grid-auto-rows:260px;gap:18px}
 .gallery-wall figure{margin:0;overflow:hidden;background:rgba(17,17,15,.08)}
 .gallery-wall figure:first-child{grid-row:span 2}
