@@ -114,6 +114,7 @@
 .project-feature-media{position:relative;margin:0;min-height:clamp(170px,13.8vw,218px);aspect-ratio:1.42;overflow:hidden;border-top:0;border-bottom:1px solid var(--line);background:rgba(170,100,64,.08)}
 .project-feature-media:before{display:none}
 .project-feature-media img{width:100%;height:100%;object-fit:cover;object-position:45% 54%;background:var(--ink);filter:saturate(.82) contrast(1.03);transform:scale(1.012);transition:transform .8s ease,filter .8s ease}
+.project-feature-media-palaiokastro img{object-position:50% 52%}
 .project-feature-media:hover img{transform:scale(1.028);filter:saturate(.95) contrast(1.05)}
 .project-feature-content{display:grid;align-content:start;padding:20px clamp(18px,2vw,28px) 17px}
 .project-feature-content h2{font-family:Georgia,serif;font-size:clamp(29px,2.55vw,38px);font-weight:500;line-height:1.08;letter-spacing:0;margin:0;color:var(--paper);text-align:center;text-wrap:balance}
