@@ -111,6 +111,7 @@
 .project-feature-media-palaiokastro img{object-position:50% 52%}
 .project-feature-media-palaiokastro-fourteen img{object-position:50% 56%}
 .project-feature-media-meteora img{object-position:50% 45%}
+.project-feature-media-oraiokastro img{object-position:50% 62%}
 .project-feature-media:hover img{transform:scale(1.028);filter:saturate(.95) contrast(1.05)}
 .project-feature-content{display:grid;align-content:start;padding:20px clamp(18px,2vw,28px) 17px}
 .project-feature-content h2{font-family:Georgia,serif;font-size:clamp(29px,2.55vw,38px);font-weight:500;line-height:1.08;letter-spacing:0;margin:0;color:var(--paper);text-align:center;text-wrap:balance}
