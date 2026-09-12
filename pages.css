@@ -115,6 +115,7 @@
 .project-feature-media-neapoli img{object-position:50% 58%}
 .project-feature-media-agios-pavlos img{object-position:50% 52%}
 .project-feature-media-meteora-apartment img{object-position:50% 55%}
+.project-feature-media-meteora-compact img{object-position:50% 56%}
 .project-feature-media:hover img{transform:scale(1.028);filter:saturate(.95) contrast(1.05)}
 .project-feature-content{display:grid;align-content:start;padding:20px clamp(18px,2vw,28px) 17px}
 .project-feature-content h2{font-family:Georgia,serif;font-size:clamp(29px,2.55vw,38px);font-weight:500;line-height:1.08;letter-spacing:0;margin:0;color:var(--paper);text-align:center;text-wrap:balance}
@@ -275,3 +276,38 @@ h2{font-size:clamp(36px,5vw,66px);line-height:1}
 @media(max-width:900px){.site-footer{grid-template-columns:1fr;align-items:start;gap:24px}.site-footer .brand{justify-self:start}.footer-contact{display:grid;grid-template-columns:repeat(2,minmax(140px,1fr));gap:18px 28px;justify-self:start;width:100%;max-width:none}.footer-contact-item,.footer-phone-item{justify-items:start;text-align:left}.footer-phone-item .footer-contact-label{justify-self:start;text-align:left}.footer-phone-item .footer-phone-stack{display:grid;gap:8px;justify-items:start}.site-footer a[data-i18n="footerTop"]{justify-self:start}.page-rights{padding-right:6vw;padding-left:6vw}}
 @media(max-width:560px){.footer-contact{grid-template-columns:1fr;gap:18px}.footer-contact-value{min-height:38px;font-size:15px}.footer-phone-stack,.footer-phone-item .footer-phone-stack{gap:6px}}
 @media(max-width:430px){.footer-contact-value{font-size:14px}.page-rights{padding-right:5vw;padding-left:5vw;font-size:10px}}
+@media(max-width:900px){
+  .site-nav a,
+  .site-nav a:not(.nav-cta),
+  .site-nav .nav-cta{
+    align-self:flex-start;
+    width:max-content;
+    max-width:100%;
+    border-bottom:0!important;
+    text-decoration:none;
+  }
+  .site-nav a.is-active,
+  .site-nav a.is-active.nav-cta{
+    border-bottom:0!important;
+    text-decoration-line:underline;
+    text-decoration-color:var(--line);
+    text-decoration-thickness:1px;
+    text-underline-offset:10px;
+  }
+  .site-nav .nav-cta:not(.is-active){
+    border-bottom:0!important;
+    text-decoration:none;
+  }
+  .language-toggle{
+    width:max-content;
+    justify-content:flex-start;
+    gap:9px;
+  }
+  .language-select{
+    align-self:flex-start;
+    border-top:0!important;
+  }
+  .site-footer a[data-i18n="footerTop"]{
+    justify-self:end;
+  }
+}
