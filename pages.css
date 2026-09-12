@@ -116,6 +116,12 @@
 .project-feature-media-agios-pavlos img{object-position:50% 52%}
 .project-feature-media-meteora-apartment img{object-position:50% 55%}
 .project-feature-media-meteora-compact img{object-position:50% 56%}
+.project-feature-media-meteora-ten img{object-position:50% 52%}
+.project-feature-media-ano-ilioupoli-eleven img{object-position:50% 57%}
+.project-feature-media-meteora-twelve img{object-position:50% 54%}
+.project-feature-media-meteora-thirteen img{object-position:50% 54%}
+.project-feature-media-meteora-fourteen img{object-position:50% 56%}
+.project-feature-media-sykies-fifteen img{object-position:50% 54%}
 .project-feature-media:hover img{transform:scale(1.028);filter:saturate(.95) contrast(1.05)}
 .project-feature-content{display:grid;align-content:start;padding:20px clamp(18px,2vw,28px) 17px}
 .project-feature-content h2{font-family:Georgia,serif;font-size:clamp(29px,2.55vw,38px);font-weight:500;line-height:1.08;letter-spacing:0;margin:0;color:var(--paper);text-align:center;text-wrap:balance}
