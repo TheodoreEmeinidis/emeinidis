@@ -1,4 +1,4 @@
-:root{--ink:#050505;--paper:#aa6440;--bronze:#aa6440;--line:#aa6440;--bronze-readable:#c9895d;--bronze-text:#d59a6b;--bronze-light:#e2b18b;--muted:var(--bronze-readable)}
+:root{--ink:#050505;--paper:#c07a4d;--bronze:#bc7348;--bronze-light:#d08a54;--muted:#aa7054;--line:#aa6440}
 .services{background:var(--ink);color:var(--paper)}
 .services .section-label{color:var(--muted)}
 .services .section-label span:first-child,.section-heading .eyebrow,.service-number,.service-arrow{color:var(--bronze-light)}
