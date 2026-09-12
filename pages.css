@@ -307,7 +307,20 @@ h2{font-size:clamp(36px,5vw,66px);line-height:1}
     align-self:flex-start;
     border-top:0!important;
   }
+  .footer-contact-item:not(.footer-phone-item){
+    justify-items:end;
+    text-align:right;
+  }
   .site-footer a[data-i18n="footerTop"]{
     justify-self:end;
+  }
+}
+@media(max-width:700px){
+  .footer-contact{
+    grid-template-columns:1fr;
+  }
+  .footer-contact-item:not(.footer-phone-item){
+    justify-items:start;
+    text-align:left;
   }
 }
