@@ -704,6 +704,9 @@ if (imageLightboxLinks.length) {
   let activeImageTrigger = null;
   let activeImageGroup = [];
   let activeImageIndex = 0;
+  let imageLightboxTouchStartX = 0;
+  let imageLightboxTouchStartY = 0;
+  let imageLightboxTouchMoved = false;
   const imageLightbox = document.createElement('div');
 
   imageLightbox.className = 'image-lightbox';
@@ -780,6 +783,7 @@ if (imageLightboxLinks.length) {
     activeImageTrigger = null;
     activeImageGroup = [];
     activeImageIndex = 0;
+    imageLightboxTouchMoved = false;
   }
 
   function openImageLightbox(trigger) {
@@ -793,6 +797,7 @@ if (imageLightboxLinks.length) {
     imageLightbox.classList.add('is-open');
     imageLightbox.setAttribute('aria-hidden', 'false');
     document.body.classList.add('lightbox-open');
+    imageLightboxTouchMoved = false;
     imageLightboxClose.focus();
   }
 
@@ -812,6 +817,11 @@ if (imageLightboxLinks.length) {
   });
 
   imageLightbox.addEventListener('click', (event) => {
+    if (imageLightboxTouchMoved) {
+      imageLightboxTouchMoved = false;
+      return;
+    }
+
     if (event.target === imageLightbox || event.target === imageLightboxFrame) {
       closeImageLightbox();
     }
@@ -820,6 +830,35 @@ if (imageLightboxLinks.length) {
   imageLightboxClose.addEventListener('click', closeImageLightbox);
   imageLightboxPrevious.addEventListener('click', () => moveImageLightbox(-1));
   imageLightboxNext.addEventListener('click', () => moveImageLightbox(1));
+
+  imageLightboxFrame.addEventListener('touchstart', (event) => {
+    if (event.touches.length !== 1) {
+      return;
+    }
+
+    imageLightboxTouchMoved = false;
+    imageLightboxTouchStartX = event.touches[0].clientX;
+    imageLightboxTouchStartY = event.touches[0].clientY;
+  }, { passive: true });
+
+  imageLightboxFrame.addEventListener('touchend', (event) => {
+    if (activeImageGroup.length < 2 || !event.changedTouches.length) {
+      return;
+    }
+
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - imageLightboxTouchStartX;
+    const deltaY = touch.clientY - imageLightboxTouchStartY;
+    const isHorizontalSwipe = Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2;
+
+    if (!isHorizontalSwipe) {
+      return;
+    }
+
+    event.preventDefault();
+    imageLightboxTouchMoved = true;
+    moveImageLightbox(deltaX < 0 ? 1 : -1);
+  }, { passive: false });
 
   document.addEventListener('keydown', (event) => {
     if (!imageLightbox.classList.contains('is-open')) {
