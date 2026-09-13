@@ -175,7 +175,10 @@ body{overflow-x:hidden}
 .site-shell{overflow:visible}
 main > section{border-top:1px solid var(--line)}
 main > section:first-child{border-top:0}
-.hero-media,.hero.hero-reel{background:var(--ink)}
+.hero-media{background:var(--ink) url('assets/hero-buildings/building-01.jpg') center/cover no-repeat}
+.hero.hero-reel{background:var(--ink)}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.82) contrast(1.04)}
+@media(prefers-reduced-motion:reduce){.hero-video{display:none}}
 .button-light,.page-cta .button-light{background:transparent;color:var(--paper);border:1px solid var(--line)}
 .intro-columns,.hero-intro,.hero-content .hero-intro,.hero-proof,.section-label,.site-nav a:not(.nav-cta),.status-heading p,.light .status-heading p,.page-hero-copy p:not(.eyebrow),.renovation-lead p,.work-card dl,.light .work-card dl,.archive-item p,.phase-list p,.process-steps p,.form-status,.service-item p,.building-info p:not(.eyebrow),.building-info dd{color:var(--muted)}
 .eyebrow,.section-label span:first-child,.work-card span,.light .work-card span,.archive-item span,.phase-list span,.contact-method span,.field label,.process-steps span,.service-number,.service-arrow,.building-info dt{color:var(--bronze-light)}
