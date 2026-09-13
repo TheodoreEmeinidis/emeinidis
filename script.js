@@ -313,7 +313,8 @@ const translations = {
     footerTop: 'ΠΙΣΩ ΣΤΗΝ ΑΡΧΗ',
     imageLightboxClose: 'Κλείσιμο εικόνας',
     imageLightboxPrevious: 'Προηγούμενη εικόνα',
-    imageLightboxNext: 'Επόμενη εικόνα'
+    imageLightboxNext: 'Επόμενη εικόνα',
+    imageLightboxGoTo: 'Μετάβαση στην εικόνα'
   },
   en: {
     documentTitle: 'Eminidis Projects — Construction & renovation',
@@ -596,7 +597,8 @@ const translations = {
     footerTop: 'BACK TO TOP',
     imageLightboxClose: 'Close image',
     imageLightboxPrevious: 'Previous image',
-    imageLightboxNext: 'Next image'
+    imageLightboxNext: 'Next image',
+    imageLightboxGoTo: 'Go to image'
   }
 };
 
@@ -714,11 +716,10 @@ if (imageLightboxLinks.length) {
   imageLightbox.setAttribute('role', 'dialog');
   imageLightbox.setAttribute('aria-modal', 'true');
   imageLightbox.innerHTML = `
-    <button class="image-lightbox-nav image-lightbox-prev" type="button" data-image-lightbox-prev hidden><span aria-hidden="true">&lt;</span></button>
     <div class="image-lightbox-frame">
       <img src="" alt="" data-image-lightbox-image>
     </div>
-    <button class="image-lightbox-nav image-lightbox-next" type="button" data-image-lightbox-next hidden><span aria-hidden="true">&gt;</span></button>
+    <div class="image-lightbox-dots" data-image-lightbox-dots hidden></div>
     <button class="image-lightbox-close" type="button" data-image-lightbox-close>X</button>
   `;
 
@@ -726,8 +727,7 @@ if (imageLightboxLinks.length) {
 
   const imageLightboxImage = imageLightbox.querySelector('[data-image-lightbox-image]');
   const imageLightboxClose = imageLightbox.querySelector('[data-image-lightbox-close]');
-  const imageLightboxPrevious = imageLightbox.querySelector('[data-image-lightbox-prev]');
-  const imageLightboxNext = imageLightbox.querySelector('[data-image-lightbox-next]');
+  const imageLightboxDots = imageLightbox.querySelector('[data-image-lightbox-dots]');
   const imageLightboxFrame = imageLightbox.querySelector('.image-lightbox-frame');
 
   function getImageGroup(trigger) {
@@ -745,10 +745,28 @@ if (imageLightboxLinks.length) {
     const hasMultipleImages = activeImageGroup.length > 1;
 
     imageLightboxClose.setAttribute('aria-label', dictionary.imageLightboxClose);
-    imageLightboxPrevious.setAttribute('aria-label', dictionary.imageLightboxPrevious);
-    imageLightboxNext.setAttribute('aria-label', dictionary.imageLightboxNext);
-    imageLightboxPrevious.hidden = !hasMultipleImages;
-    imageLightboxNext.hidden = !hasMultipleImages;
+    imageLightboxDots.hidden = !hasMultipleImages;
+    imageLightboxDots.replaceChildren();
+
+    if (!hasMultipleImages) {
+      return;
+    }
+
+    activeImageGroup.forEach((_, index) => {
+      const dot = document.createElement('button');
+      const isActive = index === activeImageIndex;
+
+      dot.className = `image-lightbox-dot${isActive ? ' is-active' : ''}`;
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `${dictionary.imageLightboxGoTo} ${index + 1}`);
+
+      if (isActive) {
+        dot.setAttribute('aria-current', 'true');
+      }
+
+      dot.addEventListener('click', () => showImageLightboxItem(index));
+      imageLightboxDots.append(dot);
+    });
   }
 
   function showImageLightboxItem(index) {
@@ -784,6 +802,8 @@ if (imageLightboxLinks.length) {
     activeImageGroup = [];
     activeImageIndex = 0;
     imageLightboxTouchMoved = false;
+    imageLightboxDots.hidden = true;
+    imageLightboxDots.replaceChildren();
   }
 
   function openImageLightbox(trigger) {
@@ -828,8 +848,6 @@ if (imageLightboxLinks.length) {
   });
 
   imageLightboxClose.addEventListener('click', closeImageLightbox);
-  imageLightboxPrevious.addEventListener('click', () => moveImageLightbox(-1));
-  imageLightboxNext.addEventListener('click', () => moveImageLightbox(1));
 
   imageLightboxFrame.addEventListener('touchstart', (event) => {
     if (event.touches.length !== 1) {
