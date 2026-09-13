@@ -710,6 +710,7 @@ if (imageLightboxLinks.length) {
   let imageLightboxTouchStartY = 0;
   let imageLightboxTouchMoved = false;
   let imageLightboxTransitionTimer = 0;
+  const preloadedImageHrefs = new Set();
   const imageLightbox = document.createElement('div');
 
   imageLightbox.className = 'image-lightbox';
@@ -785,6 +786,32 @@ if (imageLightboxLinks.length) {
     );
   }
 
+  function preloadImageLightboxLink(link) {
+    const href = link?.getAttribute('href');
+
+    if (!href || preloadedImageHrefs.has(href)) {
+      return;
+    }
+
+    const preloadImage = new Image();
+
+    preloadImage.decoding = 'async';
+    preloadImage.src = href;
+    preloadedImageHrefs.add(href);
+  }
+
+  function preloadNearbyLightboxImages() {
+    if (activeImageGroup.length < 2) {
+      return;
+    }
+
+    const previousIndex = (activeImageIndex - 1 + activeImageGroup.length) % activeImageGroup.length;
+    const nextIndex = (activeImageIndex + 1) % activeImageGroup.length;
+
+    preloadImageLightboxLink(activeImageGroup[previousIndex]);
+    preloadImageLightboxLink(activeImageGroup[nextIndex]);
+  }
+
   function showImageLightboxItem(index, direction = 0) {
     if (!activeImageGroup.length) {
       return false;
@@ -799,6 +826,8 @@ if (imageLightboxLinks.length) {
     if (!href || !image) {
       return false;
     }
+
+    preloadImageLightboxLink(link);
 
     const hasCurrentImage = Boolean(imageLightboxImage.getAttribute('src'));
     const shouldAnimate = direction !== 0 && hasCurrentImage && !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
@@ -818,12 +847,13 @@ if (imageLightboxLinks.length) {
 
       imageLightboxImage.classList.add(slideInClass);
       imageLightboxImage.addEventListener('animationend', clearImageLightboxTransition, { once: true });
-      imageLightboxTransitionTimer = window.setTimeout(clearImageLightboxTransition, 520);
+      imageLightboxTransitionTimer = window.setTimeout(clearImageLightboxTransition, 360);
     }
 
     imageLightboxImage.src = href;
     imageLightboxImage.alt = image.alt || '';
     updateImageLightboxControls();
+    preloadNearbyLightboxImages();
 
     return true;
   }
