@@ -709,6 +709,7 @@ if (imageLightboxLinks.length) {
   let imageLightboxTouchStartX = 0;
   let imageLightboxTouchStartY = 0;
   let imageLightboxTouchMoved = false;
+  let imageLightboxTransitionTimer = 0;
   const imageLightbox = document.createElement('div');
 
   imageLightbox.className = 'image-lightbox';
@@ -764,19 +765,34 @@ if (imageLightboxLinks.length) {
         dot.setAttribute('aria-current', 'true');
       }
 
-      dot.addEventListener('click', () => showImageLightboxItem(index));
+      dot.addEventListener('click', () => {
+        const direction = index === activeImageIndex ? 0 : index > activeImageIndex ? 1 : -1;
+        showImageLightboxItem(index, direction);
+      });
       imageLightboxDots.append(dot);
     });
   }
 
-  function showImageLightboxItem(index) {
+  function clearImageLightboxTransition() {
+    window.clearTimeout(imageLightboxTransitionTimer);
+    imageLightboxTransitionTimer = 0;
+    imageLightboxFrame.querySelectorAll('.image-lightbox-transition-image').forEach((image) => image.remove());
+    imageLightboxImage.classList.remove(
+      'image-lightbox-slide-in-left',
+      'image-lightbox-slide-in-right',
+      'image-lightbox-slide-out-left',
+      'image-lightbox-slide-out-right'
+    );
+  }
+
+  function showImageLightboxItem(index, direction = 0) {
     if (!activeImageGroup.length) {
       return false;
     }
 
-    activeImageIndex = (index + activeImageGroup.length) % activeImageGroup.length;
+    const nextImageIndex = (index + activeImageGroup.length) % activeImageGroup.length;
 
-    const link = activeImageGroup[activeImageIndex];
+    const link = activeImageGroup[nextImageIndex];
     const image = link.querySelector('img');
     const href = link.getAttribute('href');
 
@@ -784,7 +800,27 @@ if (imageLightboxLinks.length) {
       return false;
     }
 
+    const hasCurrentImage = Boolean(imageLightboxImage.getAttribute('src'));
+    const shouldAnimate = direction !== 0 && hasCurrentImage && !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
+    clearImageLightboxTransition();
     activeImageTrigger = link;
+    activeImageIndex = nextImageIndex;
+
+    if (shouldAnimate) {
+      const outgoingImage = imageLightboxImage.cloneNode(false);
+      const slideInClass = direction > 0 ? 'image-lightbox-slide-in-right' : 'image-lightbox-slide-in-left';
+      const slideOutClass = direction > 0 ? 'image-lightbox-slide-out-left' : 'image-lightbox-slide-out-right';
+
+      outgoingImage.removeAttribute('data-image-lightbox-image');
+      outgoingImage.className = `image-lightbox-transition-image ${slideOutClass}`;
+      imageLightboxFrame.append(outgoingImage);
+
+      imageLightboxImage.classList.add(slideInClass);
+      imageLightboxImage.addEventListener('animationend', clearImageLightboxTransition, { once: true });
+      imageLightboxTransitionTimer = window.setTimeout(clearImageLightboxTransition, 520);
+    }
+
     imageLightboxImage.src = href;
     imageLightboxImage.alt = image.alt || '';
     updateImageLightboxControls();
@@ -797,6 +833,7 @@ if (imageLightboxLinks.length) {
     imageLightbox.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('lightbox-open');
     imageLightboxImage.removeAttribute('src');
+    clearImageLightboxTransition();
     activeImageTrigger?.focus();
     activeImageTrigger = null;
     activeImageGroup = [];
@@ -826,7 +863,7 @@ if (imageLightboxLinks.length) {
       return;
     }
 
-    showImageLightboxItem(activeImageIndex + direction);
+    showImageLightboxItem(activeImageIndex + direction, direction);
   }
 
   imageLightboxLinks.forEach((link) => {
