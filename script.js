@@ -710,7 +710,8 @@ if (imageLightboxLinks.length) {
   let imageLightboxTouchStartY = 0;
   let imageLightboxTouchMoved = false;
   let imageLightboxTransitionTimer = 0;
-  const preloadedImageHrefs = new Set();
+  let imageLightboxTransitionId = 0;
+  const preloadedImagePromises = new Map();
   const imageLightbox = document.createElement('div');
 
   imageLightbox.className = 'image-lightbox';
@@ -787,6 +788,7 @@ if (imageLightboxLinks.length) {
     imageLightboxTransitionTimer = 0;
     imageLightboxFrame.querySelectorAll('.image-lightbox-transition-image').forEach((image) => image.remove());
     imageLightboxImage.classList.remove(
+      'image-lightbox-base-hidden',
       'image-lightbox-slide-in-left',
       'image-lightbox-slide-in-right',
       'image-lightbox-slide-out-left',
@@ -797,15 +799,32 @@ if (imageLightboxLinks.length) {
   function preloadImageLightboxLink(link) {
     const href = link?.getAttribute('href');
 
-    if (!href || preloadedImageHrefs.has(href)) {
-      return;
+    if (!href) {
+      return Promise.resolve(false);
+    }
+
+    if (preloadedImagePromises.has(href)) {
+      return preloadedImagePromises.get(href);
     }
 
     const preloadImage = new Image();
+    const preloadPromise = new Promise((resolve) => {
+      preloadImage.onload = () => {
+        if (preloadImage.decode) {
+          preloadImage.decode().then(() => resolve(true)).catch(() => resolve(true));
+        } else {
+          resolve(true);
+        }
+      };
+
+      preloadImage.onerror = () => resolve(false);
+    });
 
     preloadImage.decoding = 'async';
     preloadImage.src = href;
-    preloadedImageHrefs.add(href);
+    preloadedImagePromises.set(href, preloadPromise);
+
+    return preloadPromise;
   }
 
   function preloadNearbyLightboxImages() {
@@ -835,33 +854,68 @@ if (imageLightboxLinks.length) {
       return false;
     }
 
-    preloadImageLightboxLink(link);
-
     const hasCurrentImage = Boolean(imageLightboxImage.getAttribute('src'));
     const shouldAnimate = direction !== 0 && hasCurrentImage && !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    const nextImageAlt = image.alt || '';
 
     clearImageLightboxTransition();
+    imageLightboxTransitionId += 1;
+
+    const transitionId = imageLightboxTransitionId;
+    const currentImageSrc = imageLightboxImage.currentSrc || imageLightboxImage.src;
+    const currentImageAlt = imageLightboxImage.alt || '';
+
     activeImageTrigger = link;
     activeImageIndex = nextImageIndex;
-
-    if (shouldAnimate) {
-      const outgoingImage = imageLightboxImage.cloneNode(false);
-      const slideInClass = direction > 0 ? 'image-lightbox-slide-in-right' : 'image-lightbox-slide-in-left';
-      const slideOutClass = direction > 0 ? 'image-lightbox-slide-out-left' : 'image-lightbox-slide-out-right';
-
-      outgoingImage.removeAttribute('data-image-lightbox-image');
-      outgoingImage.className = `image-lightbox-transition-image ${slideOutClass}`;
-      imageLightboxFrame.append(outgoingImage);
-
-      imageLightboxImage.classList.add(slideInClass);
-      imageLightboxImage.addEventListener('animationend', clearImageLightboxTransition, { once: true });
-      imageLightboxTransitionTimer = window.setTimeout(clearImageLightboxTransition, 360);
-    }
-
-    imageLightboxImage.src = href;
-    imageLightboxImage.alt = image.alt || '';
     updateImageLightboxControls();
     preloadNearbyLightboxImages();
+
+    if (!shouldAnimate) {
+      imageLightboxImage.src = href;
+      imageLightboxImage.alt = nextImageAlt;
+      preloadImageLightboxLink(link);
+
+      return true;
+    }
+
+    const slideInClass = direction > 0 ? 'image-lightbox-slide-in-right' : 'image-lightbox-slide-in-left';
+    const slideOutClass = direction > 0 ? 'image-lightbox-slide-out-left' : 'image-lightbox-slide-out-right';
+
+    preloadImageLightboxLink(link).then(() => {
+      if (transitionId !== imageLightboxTransitionId || !imageLightbox.classList.contains('is-open')) {
+        return;
+      }
+
+      clearImageLightboxTransition();
+
+      const outgoingImage = document.createElement('img');
+      const incomingImage = document.createElement('img');
+
+      outgoingImage.src = currentImageSrc;
+      outgoingImage.alt = currentImageAlt;
+      outgoingImage.className = `image-lightbox-transition-image ${slideOutClass}`;
+
+      incomingImage.src = href;
+      incomingImage.alt = nextImageAlt;
+      incomingImage.className = `image-lightbox-transition-image ${slideInClass}`;
+
+      imageLightboxImage.classList.add('image-lightbox-base-hidden');
+      imageLightboxFrame.append(outgoingImage, incomingImage);
+
+      const finishTransition = () => {
+        if (transitionId !== imageLightboxTransitionId) {
+          return;
+        }
+
+        imageLightboxImage.src = href;
+        imageLightboxImage.alt = nextImageAlt;
+        clearImageLightboxTransition();
+      };
+
+      incomingImage.addEventListener('animationend', finishTransition, { once: true });
+      imageLightboxTransitionTimer = window.setTimeout(finishTransition, 360);
+    });
+
 
     return true;
   }
@@ -870,6 +924,7 @@ if (imageLightboxLinks.length) {
     imageLightbox.classList.remove('is-open');
     imageLightbox.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('lightbox-open');
+    imageLightboxTransitionId += 1;
     imageLightboxImage.removeAttribute('src');
     clearImageLightboxTransition();
     activeImageTrigger?.focus();
