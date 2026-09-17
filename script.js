@@ -722,10 +722,10 @@ if (imageLightboxLinks.length) {
     <div class="image-lightbox-frame">
       <img src="" alt="" data-image-lightbox-image>
     </div>
-    <button class="image-lightbox-arrow image-lightbox-arrow-prev" type="button" data-image-lightbox-previous>&lsaquo;</button>
-    <button class="image-lightbox-arrow image-lightbox-arrow-next" type="button" data-image-lightbox-next>&rsaquo;</button>
+    <button class="image-lightbox-arrow image-lightbox-arrow-prev" type="button" data-image-lightbox-previous><span aria-hidden="true"></span></button>
+    <button class="image-lightbox-arrow image-lightbox-arrow-next" type="button" data-image-lightbox-next><span aria-hidden="true"></span></button>
     <div class="image-lightbox-dots" data-image-lightbox-dots hidden></div>
-    <button class="image-lightbox-close" type="button" data-image-lightbox-close>X</button>
+    <button class="image-lightbox-close" type="button" data-image-lightbox-close><span aria-hidden="true"></span></button>
   `;
 
   document.body.append(imageLightbox);
