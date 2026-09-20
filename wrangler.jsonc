@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "emeinidis",
+  "main": "./src/worker.js",
   "compatibility_date": "2026-08-22",
   "observability": {
     "enabled": true
@@ -8,8 +9,16 @@
   "build": {
     "command": "npm run build"
   },
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "destination_address": "info@eminidis.gr"
+    }
+  ],
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"],
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
   }

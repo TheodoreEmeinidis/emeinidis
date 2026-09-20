@@ -164,7 +164,7 @@ async function handleApi(request, response, url) {
         VALUES (?, ?, ?, ?, ?)
       `).run(contact.name, contact.email, contact.phone || null, contact.message, 'website');
 
-      sendJson(response, 201, { ok: true, id: result.lastInsertRowid });
+      sendJson(response, 201, { ok: true, id: result.lastInsertRowid, delivery: 'stored' });
     } catch (error) {
       sendJson(response, 400, { error: error.message });
     }

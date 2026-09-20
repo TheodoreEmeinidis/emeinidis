@@ -304,7 +304,8 @@ const translations = {
     formEmailInvalid: 'Παρακαλώ συμπληρώστε μια έγκυρη διεύθυνση email.',
     formSending: 'Αποστολή...',
     formErrorDefault: 'Το μήνυμα δεν στάλθηκε.',
-    formSuccess: 'Το μήνυμά σας καταχωρήθηκε. Θα επικοινωνήσουμε σύντομα.',
+    formSuccess: 'Το μήνυμά σας στάλθηκε. Θα επικοινωνήσουμε σύντομα.',
+    formStoredLocal: 'Το μήνυμα αποθηκεύτηκε τοπικά. Η αποστολή email λειτουργεί στη δημοσιευμένη έκδοση.',
     formNetworkError: 'Υπήρξε πρόβλημα με την αποστολή.',
     footerContactAria: 'Στοιχεία επικοινωνίας',
     footerPhoneLabel: 'Τηλ. Επικοινωνίας',
@@ -588,7 +589,8 @@ const translations = {
     formEmailInvalid: 'Please enter a valid email address.',
     formSending: 'Sending...',
     formErrorDefault: 'The message was not sent.',
-    formSuccess: 'Your message has been recorded. We will contact you soon.',
+    formSuccess: 'Your message has been sent. We will contact you soon.',
+    formStoredLocal: 'Your message was saved locally. Email delivery works on the deployed website.',
     formNetworkError: 'There was a problem sending the message.',
     footerContactAria: 'Contact details',
     footerPhoneLabel: 'Phone',
@@ -1052,6 +1054,7 @@ contactForm?.addEventListener('submit', async (event) => {
   const invalidEmail = contactForm.querySelector('input[type="email"]:invalid');
   const formData = new FormData(contactForm);
   const payload = Object.fromEntries(formData.entries());
+  payload.language = document.documentElement.lang === 'en' ? 'en' : 'el';
 
   const dictionary = getCurrentDictionary();
 
@@ -1084,11 +1087,11 @@ contactForm?.addEventListener('submit', async (event) => {
     const result = await response.json();
 
     if (!response.ok) {
-      throw new Error(result.error || dictionary.formErrorDefault);
+      throw new Error(dictionary.formErrorDefault);
     }
 
     contactForm.reset();
-    formStatus.textContent = dictionary.formSuccess;
+    formStatus.textContent = result.delivery === 'stored' ? dictionary.formStoredLocal : dictionary.formSuccess;
     formStatus.classList.add('is-success');
   } catch (error) {
     formStatus.textContent = error.message || dictionary.formNetworkError;
