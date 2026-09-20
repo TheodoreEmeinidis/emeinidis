@@ -470,23 +470,38 @@ h2{font-size:clamp(36px,5vw,66px);line-height:1}
 
 @media(max-width:760px){
   .hero-content{
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:auto;
+    left:0;
+    height:100%;
     width:100%;
     max-width:100%;
     min-width:0;
+    padding:0;
+    align-self:stretch;
     justify-self:stretch;
   }
   .hero-content h1{
+    position:absolute;
+    top:clamp(32px,8vw,48px);
+    left:6vw;
     max-width:8ch;
+    margin:0;
     font-size:clamp(48px,14.5vw,71px);
-    transform:translateY(-10px);
+    transform:none;
   }
   .hero-content .hero-intro{
-    width:88vw;
-    max-width:88vw;
+    position:absolute;
+    bottom:18px;
+    left:4vw;
+    width:calc(100% - 190px);
+    max-width:240px;
     min-width:0;
-    font-size:22px;
-    line-height:1.7;
-    margin-bottom:0;
+    font-size:18px;
+    line-height:1.55;
+    margin:0;
   }
 }
 
