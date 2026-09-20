@@ -499,7 +499,7 @@ h2{font-size:clamp(36px,5vw,66px);line-height:1}
     width:calc(100% - 190px);
     max-width:240px;
     min-width:0;
-    font-size:18px;
+    font-size:16px;
     line-height:1.55;
     margin:0;
   }
