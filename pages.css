@@ -11,7 +11,7 @@
 .page-hero{min-height:520px;align-items:end;padding-top:115px;padding-bottom:85px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
 .page-hero:before{content:'';position:absolute;inset:auto 5.5vw 0;max-width:var(--max);height:1px;background:var(--line)}
 .page-hero h1{font-family:Georgia,serif;font-size:clamp(58px,8vw,118px);font-weight:400;line-height:.9;letter-spacing:0;margin:0 0 30px;max-width:850px}
-.page-hero h1 i,.status-heading h2 i,.renovation-lead h2 i{color:var(--bronze-light);font-style:italic}
+.page-hero h1 i,.status-heading h2 i,.renovation-lead h1 i{color:var(--bronze-light);font-style:italic}
 .page-hero-copy{max-width:760px}
 .page-hero-copy p:not(.eyebrow){max-width:580px;color:#b8a98f;font-size:16px;line-height:1.85;margin:0}
 .page-hero-media{height:420px;min-width:0;align-self:center;position:relative;overflow:hidden}
@@ -49,8 +49,8 @@
 .renovation-lead{display:grid;grid-template-columns:minmax(280px,.82fr) minmax(0,1.35fr);gap:clamp(42px,6vw,110px);align-items:center}
 .renovation-lead-copy{position:relative;z-index:1}
 .renovation-mobile-break{display:none}
-.renovation-lead h2{font-family:Georgia,serif;font-size:clamp(42px,5.5vw,78px);font-weight:400;line-height:.98;letter-spacing:0;margin:0}
-.renovation-lead p{color:#9f927d;line-height:1.85;margin:0;max-width:560px}
+.renovation-lead h1{font-family:Georgia,serif;font-size:clamp(42px,5.5vw,78px);font-weight:400;line-height:.98;letter-spacing:0;margin:0}
+.renovation-lead p{color:#9f927d;line-height:1.85;margin:clamp(24px,3vw,42px) 0 0;max-width:560px}
 .renovation-main-image{width:100%;height:clamp(500px,46vw,700px);margin:0;overflow:hidden;background:rgba(170,100,64,.08)}
 .renovation-main-image img{width:100%;height:100%;object-fit:cover;object-position:center 48%;filter:saturate(.86) contrast(1.03);transition:transform .8s ease,filter .8s ease}
 .renovation-main-image:hover img{transform:scale(1.018);filter:saturate(.96) contrast(1.04)}
@@ -248,6 +248,9 @@ main > section:first-child{border-top:0}
 @media(max-width:760px){.service-item{grid-template-columns:35px 1fr}}
 .process-steps h3,.phase-list h3{margin-top:0}
 @media(max-width:760px){.service-item{grid-template-columns:1fr}.process-steps h3,.phase-list h3{margin-top:0}}
+@media(min-width:761px){.intro-columns{font-size:16px}.process-steps p{font-size:15px}}
+@media(max-width:760px){.renovation-lead h1{font-size:clamp(36px,10vw,54px)}}
+@media(max-width:430px){.renovation-lead h1{font-size:clamp(34px,10vw,48px)}}
 
 .section-label{padding-top:0;font-size:14px;line-height:1.35}
 .section-label span:first-child{font-size:18px}
@@ -273,7 +276,7 @@ h2{font-size:clamp(36px,5vw,66px);line-height:1}
 .work-card{padding-top:10px}
 .work-card h3{font-size:34px}
 .archive-item h3{font-size:29px}
-.renovation-lead h2{font-size:clamp(36px,5vw,66px);line-height:1}
+.renovation-lead h1{font-size:clamp(36px,5vw,66px);line-height:1}
 .phase-list{margin-top:46px;padding-top:16px}
 .phase-list h3,.process-steps h3{font-size:31px}
 .building-info h2{font-size:clamp(36px,5vw,66px);line-height:1}

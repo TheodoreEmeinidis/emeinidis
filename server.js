@@ -18,14 +18,24 @@ const mimeTypes = new Map([
   ['.jpeg', 'image/jpeg'],
   ['.webp', 'image/webp'],
   ['.svg', 'image/svg+xml'],
-  ['.ico', 'image/x-icon']
+  ['.ico', 'image/x-icon'],
+  ['.xml', 'application/xml; charset=utf-8'],
+  ['.txt', 'text/plain; charset=utf-8']
 ]);
 
 const pageRoutes = new Map([
   ['/', '/index.html'],
   ['/erga', '/erga.html'],
   ['/anakainiseis', '/anakainiseis.html'],
-  ['/epikoinwnia', '/epikoinwnia.html']
+  ['/epikoinwnia', '/epikoinwnia.html'],
+  ['/en', '/en/index.html'],
+  ['/en/', '/en/index.html'],
+  ['/en/projects', '/en/projects/index.html'],
+  ['/en/projects/', '/en/projects/index.html'],
+  ['/en/renovations', '/en/renovations/index.html'],
+  ['/en/renovations/', '/en/renovations/index.html'],
+  ['/en/contact', '/en/contact/index.html'],
+  ['/en/contact/', '/en/contact/index.html']
 ]);
 
 const allowedFiles = new Set([
@@ -36,7 +46,9 @@ const allowedFiles = new Set([
   '/styles.css',
   '/responsive.css',
   '/pages.css',
-  '/script.js'
+  '/script.js',
+  '/robots.txt',
+  '/sitemap.xml'
 ]);
 
 function sendJson(response, statusCode, payload) {
@@ -181,7 +193,7 @@ async function handleApi(request, response, url) {
 }
 
 function canServePath(pathname) {
-  return allowedFiles.has(pathname) || pathname.startsWith('/assets/');
+  return allowedFiles.has(pathname) || pathname.startsWith('/assets/') || pathname.startsWith('/en/');
 }
 
 function serveStatic(request, response, url) {

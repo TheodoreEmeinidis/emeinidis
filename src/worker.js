@@ -50,7 +50,7 @@ function buildContactEmail(contact, request) {
   }).format(new Date());
   const pageUrl = request.headers.get('Referer') || new URL(request.url).origin;
   const phone = contact.phone || 'Δεν δόθηκε';
-  const subject = `Νέο μήνυμα από ${contact.name} | Eminidis Projects`;
+const subject = `Νέο μήνυμα από ${contact.name} | Eminidis Κατασκευαστική`;
   const text = [
     'ΝΕΟ ΜΗΝΥΜΑ ΑΠΟ ΤΗ ΦΟΡΜΑ ΕΠΙΚΟΙΝΩΝΙΑΣ',
     '',
@@ -71,7 +71,7 @@ function buildContactEmail(contact, request) {
       <body style="margin:0;background:#f4f1ec;color:#161616;font-family:Arial,sans-serif">
         <div style="max-width:680px;margin:0 auto;padding:32px 18px">
           <div style="background:#090909;border-top:4px solid #c9895d;padding:30px">
-            <p style="margin:0 0 10px;color:#c9895d;font-size:12px;letter-spacing:1.4px">EMINIDIS PROJECTS</p>
+<p style="margin:0 0 10px;color:#c9895d;font-size:12px;letter-spacing:1.4px">EMINIDIS ΚΑΤΑΣΚΕΥΑΣΤΙΚΗ</p>
             <h1 style="margin:0;color:#f4f1ec;font-size:25px;font-weight:500">Νέο μήνυμα επικοινωνίας</h1>
           </div>
           <div style="background:#ffffff;padding:30px;border:1px solid #ded8cf;border-top:0">
@@ -126,7 +126,7 @@ async function handleContact(request, env) {
 
   try {
     await env.EMAIL.send({
-      from: { email: SENDER_EMAIL, name: 'Eminidis Projects Website' },
+from: { email: SENDER_EMAIL, name: 'Eminidis Construction Website' },
       to: CONTACT_EMAIL,
       replyTo: contact.email,
       subject: email.subject,

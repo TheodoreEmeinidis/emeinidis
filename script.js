@@ -148,16 +148,16 @@ const languageOption = document.querySelector('[data-language-option]');
 
 const translations = {
   el: {
-    documentTitle: 'Eminidis Projects — Κατασκευές & ανακαινίσεις',
-    metaDescription: 'Eminidis Projects — κατασκευές, ανακαινίσεις και χώροι με χαρακτήρα στη Θεσσαλονίκη.',
-    homeDocumentTitle: 'Eminidis Projects — Κατασκευές & ανακαινίσεις',
-    homeMetaDescription: 'Eminidis Projects — κατασκευές, ανακαινίσεις και χώροι με χαρακτήρα στη Θεσσαλονίκη.',
-    projectsDocumentTitle: 'Έργα | Eminidis Projects',
-    projectsMetaDescription: 'Παρουσίαση έργων της Eminidis Projects με φωτογραφίες κτιρίων, κατασκευών και ολοκληρωμένων κατοικιών στη Θεσσαλονίκη.',
-    renovationsDocumentTitle: 'Ανακαινίσεις | Eminidis Projects',
-    renovationsMetaDescription: 'Ανακαινίσεις κατοικιών και επαγγελματικών χώρων από την Eminidis Projects στη Θεσσαλονίκη.',
-    contactDocumentTitle: 'Επικοινωνία | Eminidis Projects',
-    contactMetaDescription: 'Επικοινωνήστε με την Eminidis Projects για κατασκευές και ανακαινίσεις στη Θεσσαλονίκη.',
+    documentTitle: 'Eminidis Κατασκευαστική | Κατασκευές & Ανακαινίσεις Θεσσαλονίκη',
+    metaDescription: 'Η Eminidis Κατασκευαστική αναλαμβάνει νέες κατασκευές και ανακαινίσεις κατοικιών και πολυκατοικιών στη Θεσσαλονίκη, με περισσότερα από 40 χρόνια εμπειρίας.',
+    homeDocumentTitle: 'Eminidis Κατασκευαστική | Κατασκευές & Ανακαινίσεις Θεσσαλονίκη',
+    homeMetaDescription: 'Η Eminidis Κατασκευαστική αναλαμβάνει νέες κατασκευές και ανακαινίσεις κατοικιών και πολυκατοικιών στη Θεσσαλονίκη, με περισσότερα από 40 χρόνια εμπειρίας.',
+    projectsDocumentTitle: 'Έργα Κατασκευών στη Θεσσαλονίκη | Eminidis Κατασκευαστική',
+    projectsMetaDescription: 'Δείτε επιλεγμένα έργα κατασκευών της Eminidis Κατασκευαστικής: πολυκατοικίες, κατοικίες και συγκροτήματα στη Θεσσαλονίκη.',
+    renovationsDocumentTitle: 'Ανακαινίσεις στη Θεσσαλονίκη | Eminidis Κατασκευαστική',
+    renovationsMetaDescription: 'Ολικές ανακαινίσεις κατοικιών, διαμερισμάτων και πολυκατοικιών στη Θεσσαλονίκη από την Eminidis Κατασκευαστική, με σωστή οργάνωση και τεχνική επίβλεψη.',
+    contactDocumentTitle: 'Επικοινωνία | Eminidis Κατασκευαστική Θεσσαλονίκη',
+    contactMetaDescription: 'Επικοινωνήστε με την Eminidis Κατασκευαστική στη Θεσσαλονίκη για νέες κατασκευές, ανακαινίσεις, μελέτη και επίβλεψη έργων.',
     currentLanguageLabel: 'ΕΛ',
     languageOptionLabel: 'EN',
     languageOptionCode: 'en',
@@ -175,7 +175,7 @@ const translations = {
     proofPrefix: 'ΑΠΟ ΤΟ',
     aboutLabel: 'ΠΟΙΟΙ ΕΙΜΑΣΤΕ',
     aboutHeading: 'Η εμπειρία συναντά<br><i>τη σύγχρονη ματιά.</i>',
-    aboutBodyOne: 'Η Eminidis Projects έχει χτιστεί πάνω στην τεχνική γνώση, την αξιοπιστία και την προσοχή στη λεπτομέρεια. Με περισσότερα από 40 χρόνια εμπειρίας στην κατασκευή και την ανακαίνιση, δημιουργούμε έργα με καθαρή σκέψη, σωστά υλικά και συνέπεια.',
+    aboutBodyOne: 'Η Eminidis Κατασκευαστική δραστηριοποιείται στη Θεσσαλονίκη, αναλαμβάνοντας νέες κατασκευές και ανακαινίσεις με τεχνική γνώση, αξιοπιστία και προσοχή στη λεπτομέρεια. Με περισσότερα από 40 χρόνια εμπειρίας, υλοποιούμε κατοικίες και πολυκατοικίες με ποιοτικά υλικά, σωστή οργάνωση και συνέπεια.',
     aboutBodyTwo: 'Κάθε έργο είναι διαφορετικό. Η προσέγγισή μας όμως παραμένει ίδια: ακούμε, σχεδιάζουμε, οργανώνουμε και παραδίδουμε έναν χώρο που σας εκφράζει.',
     servicesLabel: 'ΟΙ ΥΠΗΡΕΣΙΕΣ ΜΑΣ',
     serviceOneTitle: 'Νέα κατασκευή',
@@ -387,6 +387,7 @@ const translations = {
     projectsCtaHeading: 'Θέλετε να δούμε<br>το δικό σας έργο;',
     projectsCtaButton: 'Επικοινωνία',
     renovationsLeadHeading: 'Ολική<br class="renovation-mobile-break"> ανακαίνιση<br><i>πολυκατοικίας.</i>',
+    renovationsSeoIntro: 'Αναλαμβάνουμε ολικές ανακαινίσεις κατοικιών, διαμερισμάτων και πολυκατοικιών στη Θεσσαλονίκη, με ολοκληρωμένο τεχνικό σχεδιασμό, οργάνωση συνεργείων και επίβλεψη σε κάθε στάδιο. Από την αποτύπωση και την επιλογή υλικών έως την τελική παράδοση, στόχος μας είναι ένας λειτουργικός, σύγχρονος και ανθεκτικός χώρος.',
     renovationsStagesHeading: 'Στάδια εργασιών',
     renovationsPhaseOneTitle: 'Αποτύπωση',
     renovationsPhaseOneBody: 'Καταγράφουμε την υπάρχουσα κατάσταση, τις ανάγκες και τους περιορισμούς του χώρου.',
@@ -433,16 +434,16 @@ const translations = {
     imageLightboxGoTo: 'Μετάβαση στην εικόνα'
   },
   en: {
-    documentTitle: 'Eminidis Projects — Construction & renovation',
-    metaDescription: 'Eminidis Projects — construction, renovation, and distinctive spaces in Thessaloniki.',
-    homeDocumentTitle: 'Eminidis Projects — Construction & renovation',
-    homeMetaDescription: 'Eminidis Projects — construction, renovation, and distinctive spaces in Thessaloniki.',
-    projectsDocumentTitle: 'Projects | Eminidis Projects',
-    projectsMetaDescription: 'Project presentation by Eminidis Projects with building, construction, and completed residence photography in Thessaloniki.',
-    renovationsDocumentTitle: 'Renovations | Eminidis Projects',
-    renovationsMetaDescription: 'Home and commercial renovations by Eminidis Projects in Thessaloniki.',
-    contactDocumentTitle: 'Contact | Eminidis Projects',
-    contactMetaDescription: 'Contact Eminidis Projects for construction and renovation work in Thessaloniki.',
+    documentTitle: 'Eminidis Construction | Construction & Renovation in Thessaloniki',
+    metaDescription: 'Eminidis Construction delivers new builds, home renovations, and apartment building renovations in Thessaloniki, backed by more than 40 years of experience.',
+    homeDocumentTitle: 'Eminidis Construction | Construction & Renovation in Thessaloniki',
+    homeMetaDescription: 'Eminidis Construction delivers new builds, home renovations, and apartment building renovations in Thessaloniki, backed by more than 40 years of experience.',
+    projectsDocumentTitle: 'Construction Projects in Thessaloniki | Eminidis Construction',
+    projectsMetaDescription: 'Explore selected Eminidis Construction projects, including apartment buildings, homes, and residential complexes in Thessaloniki.',
+    renovationsDocumentTitle: 'Renovations in Thessaloniki | Eminidis Construction',
+    renovationsMetaDescription: 'Complete home, apartment, and apartment building renovations in Thessaloniki, with careful planning, coordination, and technical supervision.',
+    contactDocumentTitle: 'Contact | Eminidis Construction Thessaloniki',
+    contactMetaDescription: 'Contact Eminidis Construction in Thessaloniki to discuss new construction, renovation, design, or project supervision.',
     currentLanguageLabel: 'EN',
     languageOptionLabel: 'ΕΛ',
     languageOptionCode: 'el',
@@ -460,15 +461,15 @@ const translations = {
     proofPrefix: 'EST.',
     aboutLabel: 'WHO WE ARE',
     aboutHeading: 'Experience meets<br><i>a modern point of view.</i>',
-    aboutBodyOne: 'Eminidis Projects is built on technical knowledge, reliability, and attention to detail. With more than 40 years of experience in construction and renovation, we create work with clear thinking, proper materials, and consistency.',
-    aboutBodyTwo: 'Every project is different. Our approach stays the same: we listen, design, organize, and deliver a space that reflects you.',
+    aboutBodyOne: 'Eminidis Construction is a Thessaloniki-based construction company specializing in new builds and renovations. With more than 40 years of experience, we deliver homes and apartment buildings through technical expertise, quality materials, careful planning, and consistent execution.',
+    aboutBodyTwo: 'Every project is different. Our approach remains the same: we listen, design, coordinate, and deliver a space that reflects the people who use it.',
     servicesLabel: 'OUR SERVICES',
     serviceOneTitle: 'New construction',
     serviceOneBody: 'Homes that combine modern aesthetics, functional design, and construction quality.',
     serviceTwoTitle: 'Renovations',
     serviceTwoBody: 'Renovations with emphasis on functionality, aesthetics, and quality.',
     serviceThreeTitle: 'Design & supervision',
-    serviceThreeBody: 'Organization, technical knowledge, and consistency at every stage.',
+    serviceThreeBody: 'Careful coordination, technical expertise, and consistency at every stage.',
     projectsLabel: 'SELECTED WORK',
     projectsEyebrow: 'A FEW OF OUR SPACES',
     projectsHeading: 'Work that<br><i>speaks for itself.</i>',
@@ -479,11 +480,11 @@ const translations = {
     processLabel: 'THE PROCESS',
     processHeading: 'A good collaboration<br>starts with <i>good listening.</i>',
     processOneTitle: 'We listen',
-    processOneBody: 'We define the requirements, priorities, and financial framework of the project.',
+    processOneBody: 'We define the project requirements, priorities, and budget framework.',
     processTwoTitle: 'We design',
-    processTwoBody: 'We turn the idea into a specific, practical plan.',
+    processTwoBody: 'We turn the idea into a clear, practical plan.',
     processThreeTitle: 'We build',
-    processThreeBody: 'We take care of every detail until the keys are delivered.',
+    processThreeBody: 'We manage every detail through to final handover.',
     contactButton: 'Contact us',
     projectsPageLabel: 'PROJECTS',
     projectsPageEyebrow: 'BUILDINGS / DETAILS / PROGRESS',
@@ -672,6 +673,7 @@ const translations = {
     projectsCtaHeading: 'Would you like to discuss<br>your own project?',
     projectsCtaButton: 'Contact',
     renovationsLeadHeading: 'Complete<br class="renovation-mobile-break"> apartment building<br><i>renovation.</i>',
+    renovationsSeoIntro: 'We undertake complete renovations of homes, apartments, and apartment buildings in Thessaloniki, providing technical planning, trade coordination, and supervision at every stage. From the initial survey and material selection to final handover, our goal is to create a functional, contemporary, and durable space.',
     renovationsStagesHeading: 'Stages of work',
     renovationsPhaseOneTitle: 'Survey',
     renovationsPhaseOneBody: 'We record the existing condition, needs, and limitations of the space.',
@@ -735,6 +737,13 @@ function saveLanguage(language) {
   }
 }
 
+const localizedRoutes = {
+  home: { el: '/', en: '/en/' },
+  projects: { el: '/erga', en: '/en/projects/' },
+  renovations: { el: '/anakainiseis', en: '/en/renovations/' },
+  contact: { el: '/epikoinwnia', en: '/en/contact/' }
+};
+
 function applyLanguage(language) {
   const nextLanguage = translations[language] ? language : 'el';
   const dictionary = translations[nextLanguage];
@@ -788,8 +797,8 @@ function setLanguageMenuOpen(isOpen) {
 }
 
 if (languageMenu && languageToggle && languageOption) {
-  const savedLanguage = getSavedLanguage();
-  applyLanguage(savedLanguage === 'en' ? 'en' : 'el');
+  const pageLanguage = document.documentElement.lang === 'en' ? 'en' : 'el';
+  applyLanguage(pageLanguage);
 
   languageToggle.addEventListener('click', (event) => {
     event.stopPropagation();
@@ -798,9 +807,13 @@ if (languageMenu && languageToggle && languageOption) {
 
   languageOption.addEventListener('click', (event) => {
     event.stopPropagation();
-    applyLanguage(languageOption.dataset.languageOption);
+    const nextLanguage = languageOption.dataset.languageOption;
+    const pageKey = document.body?.dataset.page || 'home';
+    const nextRoute = localizedRoutes[pageKey]?.[nextLanguage] || localizedRoutes.home[nextLanguage];
+
+    saveLanguage(nextLanguage);
     setLanguageMenuOpen(false);
-    languageToggle.focus();
+    window.location.assign(nextRoute);
   });
 
   document.addEventListener('click', (event) => {

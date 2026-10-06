@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Website and lightweight Node.js backend for Eminidis Projects.",
+  "description": "Website and lightweight Node.js backend for Eminidis Construction.",
   "scripts": {
-    "build": "node scripts/build-static.mjs",
+    "build": "node scripts/generate-english-pages.mjs && node scripts/build-static.mjs",
     "deploy": "npm run build && wrangler deploy",
     "preview": "npm run build && wrangler dev",
     "start": "node server.js",

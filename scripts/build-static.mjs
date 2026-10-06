@@ -13,6 +13,8 @@ const files = [
   'responsive.css',
   'pages.css',
   'script.js',
+  'robots.txt',
+  'sitemap.xml',
 ];
 
 await rm(dist, { force: true, recursive: true });
@@ -23,6 +25,7 @@ for (const file of files) {
 }
 
 await cp(join(root, 'assets'), join(dist, 'assets'), { recursive: true });
+await cp(join(root, 'en'), join(dist, 'en'), { recursive: true });
 
 await writeFile(
   join(dist, '404.html'),
@@ -31,7 +34,7 @@ await writeFile(
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Η σελίδα δεν βρέθηκε | Eminidis Projects</title>
+  <title>Η σελίδα δεν βρέθηκε | Eminidis Κατασκευαστική</title>
   <link rel="stylesheet" href="/styles.css?v=black9">
   <link rel="stylesheet" href="/responsive.css?v=black9">
   <link rel="stylesheet" href="/pages.css?v=black78">
@@ -41,7 +44,7 @@ await writeFile(
     <section class="page-hero section-grid">
       <div class="section-label"><span>404</span><span>ΣΕΛΙΔΑ</span></div>
       <div class="page-hero-copy">
-        <p class="eyebrow">EMINIDIS PROJECTS</p>
+        <p class="eyebrow">EMINIDIS ΚΑΤΑΣΚΕΥΑΣΤΙΚΗ</p>
         <h1>Η σελίδα<br><i>δεν βρέθηκε.</i></h1>
         <p>Επιστρέψτε στην αρχική σελίδα για να συνεχίσετε την περιήγηση.</p>
         <a class="button button-light" href="/">Αρχική</a>

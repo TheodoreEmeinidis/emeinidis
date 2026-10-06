@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://eminidis.gr/</loc><xhtml:link rel="alternate" hreflang="el" href="https://eminidis.gr/"/><xhtml:link rel="alternate" hreflang="en" href="https://eminidis.gr/en/"/></url>
+  <url><loc>https://eminidis.gr/erga</loc><xhtml:link rel="alternate" hreflang="el" href="https://eminidis.gr/erga"/><xhtml:link rel="alternate" hreflang="en" href="https://eminidis.gr/en/projects/"/></url>
+  <url><loc>https://eminidis.gr/anakainiseis</loc><xhtml:link rel="alternate" hreflang="el" href="https://eminidis.gr/anakainiseis"/><xhtml:link rel="alternate" hreflang="en" href="https://eminidis.gr/en/renovations/"/></url>
+  <url><loc>https://eminidis.gr/epikoinwnia</loc><xhtml:link rel="alternate" hreflang="el" href="https://eminidis.gr/epikoinwnia"/><xhtml:link rel="alternate" hreflang="en" href="https://eminidis.gr/en/contact/"/></url>
+  <url><loc>https://eminidis.gr/en/</loc><xhtml:link rel="alternate" hreflang="el" href="https://eminidis.gr/"/><xhtml:link rel="alternate" hreflang="en" href="https://eminidis.gr/en/"/></url>
+  <url><loc>https://eminidis.gr/en/projects/</loc><xhtml:link rel="alternate" hreflang="el" href="https://eminidis.gr/erga"/><xhtml:link rel="alternate" hreflang="en" href="https://eminidis.gr/en/projects/"/></url>
+  <url><loc>https://eminidis.gr/en/renovations/</loc><xhtml:link rel="alternate" hreflang="el" href="https://eminidis.gr/anakainiseis"/><xhtml:link rel="alternate" hreflang="en" href="https://eminidis.gr/en/renovations/"/></url>
+  <url><loc>https://eminidis.gr/en/contact/</loc><xhtml:link rel="alternate" hreflang="el" href="https://eminidis.gr/epikoinwnia"/><xhtml:link rel="alternate" hreflang="en" href="https://eminidis.gr/en/contact/"/></url>
+</urlset>
