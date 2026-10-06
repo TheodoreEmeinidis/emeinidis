@@ -37,6 +37,7 @@ const staticReplacements = new Map([
   ['aria-label="Μεγέθυνση κύριας εικόνας ανακαίνισης"', 'aria-label="Open full-size renovation image"'],
   ['aria-label="Μεγέθυνση σταδίου εργασιών ', 'aria-label="Open full-size renovation stage '],
   ['alt="Πολυκατοικία μετά την ολική ανακαίνιση"', 'alt="Apartment building after complete renovation"'],
+  ['alt="Εργασίες ολικής ανακαίνισης εσωτερικού χώρου στη Θεσσαλονίκη"', 'alt="Complete interior renovation work in Thessaloniki"'],
   ['alt="Στάδιο εργασιών ', 'alt="Renovation work stage '],
   ['alt="Φωτορεαλιστικό πολυκατοικίας στην Άνω Ηλιούπολη"', 'alt="Architectural rendering of an apartment building in Ano Ilioupoli"'],
   ['<p>Παστέρ 10<br>Πολίχνη Θεσσαλονίκης</p>', '<p>10 Pasteur Street<br>Polichni, Thessaloniki</p>']
